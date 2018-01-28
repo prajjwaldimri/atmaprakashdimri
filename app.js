@@ -1,14 +1,18 @@
 const express = require('express');
 const app = express();
+const path = require('path');
 
 app.set('view engine', 'pug');
+app.set('views', path.join(__dirname, 'source/views'));
+
+app.use(express.static('public'));
 
 app.get('/', (req, res) => {
   res.render('index', { pageTitle: 'Home' });
 });
 
 app.get('/gallery', (req, res) => {
-  res.render('Gallery', { pageTitle: 'Gallery' });
+  res.render('gallery', { pageTitle: 'Gallery' });
 });
 
 app.get('/about', (req, res) => {
