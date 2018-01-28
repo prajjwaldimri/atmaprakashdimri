@@ -1,0 +1,19 @@
+{
+  "name": "atmaprakashdimri.me",
+  "version": "1.0.0",
+  "description": "Website situated at atmaprakashdimri.me",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/prajjwaldimri/atmaprakashdimri.git"
+  },
+  "author": "Prajjwal",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/prajjwaldimri/atmaprakashdimri/issues"
+  },
+  "homepage": "https://github.com/prajjwaldimri/atmaprakashdimri#readme"
+}
