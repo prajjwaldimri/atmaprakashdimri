@@ -5,21 +5,22 @@ block content
     .column.is-4.is-offset-4
       .box.is-primary
         h1.title.has-text-centered Admin Login
-        .field
-          label.label.is-medium Email
-          .control.has-icons-left
-            input(class="input", type="email", placeholder="test@example.com", required)
-            span(class="icon is-small is-left")
-              i.fas.fa-envelope
-        .field
-          label.label.is-medium Password
-          .control.has-icons-left
-            input(class="input", type="password", required)
-            span(class="icon is-small is-left")
-              i.fas.fa-lock
+        form(action="/adminLogin", method="post")
+          .field
+            label.label.is-medium Username
+            .control.has-icons-left
+              input(class="input", type="text", placeholder="test_username", required="required", name="username")
+              span(class="icon is-small is-left")
+                i.fas.fa-user
+          .field
+            label.label.is-medium Password
+            .control.has-icons-left
+              input(class="input", type="password", required="required", name="password")
+              span(class="icon is-small is-left")
+                i.fas.fa-lock
 
-        .field.is-grouped
-          .control
-            button(class="button is-success") Login
-          .control
-            button(class="button is-light") Cancel
+          .field.is-grouped
+            .control
+              button(class="button is-success", type="submit") Login
+            .control
+              button(class="button is-light") Cancel
