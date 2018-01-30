@@ -7,6 +7,22 @@ html(lang="en" class="has-navbar-fixed-top")
     link(rel="stylesheet", href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.6.2/css/bulma.min.css")
     script(defer src="https://use.fontawesome.com/releases/v5.0.0/js/all.js")
     link(rel="stylesheet", href="/css/main.css")
-body  
+body
+  if messages.info
+    .notification.is-info
+      button.delete
+      | #{messages.info}
+
+  if messages.warning
+    .notification.is-warning
+      button.delete
+      | #{messages.warning}
+
+  if messages.error
+    .notification.is-danger
+      button.delete
+      | #{messages.error}
+
+
   block content
   script(src="/js/main.js")  
