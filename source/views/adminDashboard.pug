@@ -1,1 +1,32 @@
 extend layout.pug
+
+block content
+  include includes/topnav.pug
+  .columns
+    .column.is-3
+      .box
+        aside.menu
+          p.menu-label General
+          ul.menu-list
+            li
+              a.is-active Edit Profile
+            li
+              a Edit Password
+          p.menu-label Blog
+          ul.menu-list
+            li
+              a New Blog Post
+            li
+              a Edit Blog Post
+          p.menu-label Gallery
+          ul.menu-list
+            li
+              a Upload a Picture
+            li
+              a Delete existing pictures
+          p.menu-label Files
+          ul.menu-list
+            li
+              a Upload a file
+            li
+              a Delete existing file

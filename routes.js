@@ -8,11 +8,13 @@ router.get('/', (req, res) => {
 });
 
 router.get('/adminDashboard', (req, res) => {
-  if (req.user) {
-    res.render('adminDashboard', { pageTitle: 'Admin Dashboard' });
-  } else {
-    res.redirect('/');
-  }
+  // if (req.user) {
+  //   res.render('adminDashboard', { pageTitle: 'Admin Dashboard' });
+  // } else {
+  //   res.redirect('/');
+  // }
+
+  res.render('adminDashboard', { pageTitle: 'Admin Dashboard' });
 });
 
 router.post('/adminRegister', (req, res, next) => {

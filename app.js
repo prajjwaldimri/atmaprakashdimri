@@ -33,7 +33,9 @@ passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
 
 // MongoDB connection
-mongoose.connect('mongodb://localhost/passport_local_mongoose');
+mongoose.connect(
+  process.env.MONGO_DB_URI || 'mongodb://localhost/passport_local_mongoose'
+);
 
 app.use('/', routes);
 

@@ -1,0 +1,14 @@
+if messages.info
+  .notification.is-info
+    button.delete
+    | #{messages.info}
+
+if messages.warning
+  .notification.is-warning
+    button.delete
+    | #{messages.warning}
+
+if messages.error
+  .notification.is-danger
+    button.delete
+    | #{messages.error}
