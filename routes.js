@@ -7,16 +7,6 @@ router.get('/', (req, res) => {
   res.render('index', { pageTitle: 'Home' });
 });
 
-router.get('/adminDashboard', (req, res) => {
-  // if (req.user) {
-  //   res.render('adminDashboard', { pageTitle: 'Admin Dashboard' });
-  // } else {
-  //   res.redirect('/');
-  // }
-
-  res.render('adminDashboard', { pageTitle: 'Admin Dashboard' });
-});
-
 router.post('/adminRegister', (req, res, next) => {
   User.register(
     new User({ username: req.body.username }),
@@ -26,7 +16,7 @@ router.post('/adminRegister', (req, res, next) => {
         console.log(`Error while Registering: ${err}`);
         return next(err);
       }
-      res.redirect('/adminDashboard');
+      res.redirect('/adminDashboard/editPassword');
     }
   );
 });
@@ -48,7 +38,7 @@ router.get('/adminLogin', (req, res) => {
 });
 
 router.post('/adminLogin', passport.authenticate('local'), (req, res) => {
-  res.redirect('/adminDashboard');
+  res.redirect('/adminDashboard/editPassword');
 });
 
 module.exports = router;

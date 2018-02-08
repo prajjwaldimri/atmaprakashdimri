@@ -1,0 +1,19 @@
+extends dashboardLayout.pug
+
+block content
+  include ../includes/topnav.pug
+  .columns
+    include ../includes/adminDashboard.pug
+
+    .column.is-8
+      include ../includes/notification.pug
+      each post in blogPosts
+        .card(style="margin-top: 4%")
+          header.card-header
+            p.card-header-title=post.title
+          .card-content
+            .content=post.content
+          footer.card-footer
+            a.card-footer-item(href="/adminDashboard/editBlogPost/" + post._id) Edit
+            a.card-footer-item(href="/adminDashboard/deleteBlogPost/" + post._id, style="background: #eee") Delete
+            

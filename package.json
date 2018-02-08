@@ -22,7 +22,7 @@
     "express": "^4.16.2",
     "express-flash": "0.0.2",
     "express-session": "^1.15.6",
-    "mongoose": "^5.0.1",
+    "mongoose": "^5.0.3",
     "passport": "^0.4.0",
     "passport-local": "^1.0.0",
     "passport-local-mongoose": "^4.4.0",
@@ -30,8 +30,8 @@
     "semistandard": "^12.0.0"
   },
   "devDependencies": {
-    "@babel/core": "^7.0.0-beta.38",
-    "@babel/preset-env": "^7.0.0-beta.38",
+    "@babel/core": "^7.0.0-beta.39",
+    "@babel/preset-env": "^7.0.0-beta.39",
     "autoprefixer": "^7.2.5",
     "babel-core": "^6.26.0",
     "eslint-config-standard": "^11.0.0-beta.0",

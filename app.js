@@ -8,6 +8,7 @@ const path = require('path');
 const mongoose = require('mongoose');
 const passport = require('passport');
 const routes = require('./routes');
+const adminDashboardRoutes = require('./adminDashboardRoutes');
 
 app.set('view engine', 'pug');
 app.set('views', path.join(__dirname, 'source/views'));
@@ -31,6 +32,7 @@ const User = require('./models/user');
 passport.use(User.createStrategy());
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
+require('./models/blog');
 
 // MongoDB connection
 mongoose.connect(
@@ -38,6 +40,7 @@ mongoose.connect(
 );
 
 app.use('/', routes);
+app.use('/adminDashboard', adminDashboardRoutes);
 
 app.listen('8080', () => {
   console.log('App listening on 8080');

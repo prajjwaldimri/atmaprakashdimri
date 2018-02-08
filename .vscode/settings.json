@@ -3,6 +3,7 @@
     "db",
     "mongo",
     "resave",
+    "topnav",
     "uri"
   ]
 }
