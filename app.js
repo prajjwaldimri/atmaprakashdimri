@@ -35,9 +35,9 @@ passport.deserializeUser(User.deserializeUser());
 require('./models/blog');
 
 // MongoDB connection
-mongoose.connect(
-  process.env.MONGO_DB_URI || 'mongodb://localhost/passport_local_mongoose'
-);
+// mongoose.connect(
+//   process.env.MONGO_DB_URI || 'mongodb://localhost/passport_local_mongoose'
+// );
 
 app.use('/', routes);
 app.use('/adminDashboard', adminDashboardRoutes);

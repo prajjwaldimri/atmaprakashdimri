@@ -7,13 +7,17 @@ block content
 
     .column.is-8
       include ../includes/notification.pug
-      form(action="/newBlogPost", method="post", style="padding-top: 4%")
+      form(action="/adminDashboard/newImageUpload", method="post", style="padding-top: 4%", enctype="multipart/form-data")
+        
         .field
-          label.label Blog Post Title
-          .control
-            input.input(type="text", name="blogTitle")
+          .file.has-name.is-fullwidth
+            label.file-label
+              input.file-input(type="file", name="uploadedImage")
+              span.file-cta
+                span.file-icon
+                  i.fas.fa-upload
+                span.file-label Choose an image...
+              span.file-name
 
         .field
-          label.label Blog Post Content
-          .control
-            textarea.textarea(name="blogContent")
+          button.button.is-info(type="submit") Upload Image

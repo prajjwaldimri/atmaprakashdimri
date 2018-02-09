@@ -7,4 +7,12 @@ block content
 
     .column.is-8
       include ../includes/notification.pug
-      
+      each file in files
+        .card(style="margin-top: 4%")
+          header.card-header
+            p.card-header-title Uploaded on: #{file.uploadDate}
+          .card-content
+            .content=file.filename
+          footer.card-footer
+            a.card-footer-item(href="/adminDashboard/downloadFile/" + file._id) Download
+            a.card-footer-item(href="/adminDashboard/deleteFile/" + file._id, style="background: #eee") Delete

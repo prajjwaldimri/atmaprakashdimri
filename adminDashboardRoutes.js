@@ -2,9 +2,37 @@ const path = require('path');
 const router = require('express').Router();
 const Blog = require('./models/blog');
 const multer = require('multer');
+const mongoose = require('mongoose');
+let gridfsFile;
+let gridfsImage;
+let File;
+let Image;
+mongoose
+  .connect(
+    process.env.MONGODB_URL || 'mongodb://localhost/passport_local_mongoose'
+  )
+  .then(
+    () => {
+      gridfsFile = require('mongoose-gridfs')({
+        collection: 'files',
+        model: 'File',
+        mongooseConnection: mongoose.connection
+      });
+      File = gridfsFile.model;
+      gridfsImage = require('mongoose-gridfs')({
+        collection: 'images',
+        model: 'Image',
+        mongooseConnection: mongoose.connection
+      });
+      Image = gridfsImage.model;
+    },
+    err => {
+      console.log(err);
+    }
+  );
 const GridFsStorage = require('multer-gridfs-storage');
 const fileStorage = new GridFsStorage({
-  url: 'mongodb://localhost/passport_local_mongoose',
+  url: process.env.MONGODB_URL || 'mongodb://localhost/passport_local_mongoose',
   file: (req, file) => {
     return {
       filename:
@@ -14,7 +42,7 @@ const fileStorage = new GridFsStorage({
   }
 });
 const imageStorage = new GridFsStorage({
-  url: 'mongodb://localhost/passport_local_mongoose',
+  url: process.env.MONGODB_URL || 'mongodb://localhost/passport_local_mongoose',
   file: (req, file) => {
     return {
       filename:
@@ -23,6 +51,7 @@ const imageStorage = new GridFsStorage({
     };
   }
 });
+
 const fileUpload = multer({
   storage: fileStorage,
   fileFilter: function (req, file, cb) {
@@ -75,8 +104,59 @@ router.get('/allBlogPosts', (req, res) => {
 });
 
 router.get('/allUploadedFiles', (req, res) => {
-  res.render('dashboard/allUploadedFiles', {
-    pageTitle: 'List of uploaded files on server'
+  File.find({}, (err, files) => {
+    if (err) {
+      req.flash('error', err);
+      res.redirect('back');
+    }
+    res.render('dashboard/allUploadedFiles', {
+      pageTitle: 'List of uploaded files on server',
+      files: files
+    });
+  });
+});
+
+router.get('/allUploadedImages', (req, res) => {
+  Image.find({}, (err, images) => {
+    if (err) {
+      req.flash('error', err);
+      res.redirect('back');
+    }
+    console.log(images);
+    res.render('dashboard/allUploadedImages', {
+      pageTitle: 'List of uploaded files on server',
+      images: images
+    });
+  });
+});
+
+router.get('/downloadFile/:fileId', (req, res) => {
+  let fileStream = File.readById(req.params.fileId);
+  fileStream.pipe(res);
+});
+
+router.get('/deleteFile/:fileId', (req, res) => {
+  File.unlinkById(req.params.fileId, (err, unlinkedAttachment) => {
+    if (err) {
+      req.flash('error', err);
+    }
+    req.flash('success', 'File successfully deleted');
+    res.redirect('back');
+  });
+});
+
+router.get('/downloadImage/:fileId', (req, res) => {
+  let imageStream = Image.readById(req.params.fileId);
+  imageStream.pipe(res);
+});
+
+router.get('/deleteImage/:fileId', (req, res) => {
+  Image.unlinkById(req.params.fileId, (err, unlinkedAttachment) => {
+    if (err) {
+      req.flash('error', err);
+    }
+    req.flash('success', 'Image successfully deleted');
+    res.redirect('back');
   });
 });
 
@@ -189,6 +269,18 @@ router.post('/newFileUpload', (req, res) => {
 
 router.get('/newImageUpload', (req, res) => {
   res.render('dashboard/newImageUpload', { pageTitle: 'Upload an image' });
+});
+
+router.post('/newImageUpload', (req, res) => {
+  imageUpload(req, res, err => {
+    if (err) {
+      req.flash('error', 'Error Uploading File');
+      console.log(err);
+    } else {
+      req.flash('success', 'Successfully uploaded image');
+    }
+    res.redirect('/adminDashboard/allUploadedImages');
+  });
 });
 
 router.post('/newImageUpload', (req, res) => {
