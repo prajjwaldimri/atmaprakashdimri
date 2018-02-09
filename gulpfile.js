@@ -10,7 +10,7 @@ const babel = require('gulp-babel');
 gulp.task('js', function () {
   return gulp
     .src('./source/js/*.js')
-    .pipe(babel())
+    .pipe(babel({ presets: ['env'] }))
     .pipe(uglify())
     .pipe(concat('main.js'))
     .pipe(gulp.dest('./public/js'));
