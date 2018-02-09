@@ -1,24 +1,12 @@
 const router = require('express').Router();
-const User = require('./models/user');
+const userController = require('./controllers/userController');
 const passport = require('passport');
 
 router.get('/', (req, res) => {
   res.render('index', { pageTitle: 'Home' });
 });
 
-router.post('/adminRegister', (req, res, next) => {
-  User.register(
-    new User({ username: req.body.username }),
-    req.body.password,
-    err => {
-      if (err) {
-        console.log(`Error while Registering: ${err}`);
-        return next(err);
-      }
-      res.redirect('/adminDashboard/editPassword');
-    }
-  );
-});
+router.post('/adminRegister', userController.register_user_post);
 
 router.get('/gallery', (req, res) => {
   res.render('gallery', { pageTitle: 'Gallery' });
@@ -32,9 +20,7 @@ router.get('/blog', (req, res) => {
   res.render('blog', { pageTitle: 'Blog' });
 });
 
-router.get('/adminLogin', (req, res) => {
-  res.render('adminLogin', { pageTitle: 'Login for Administrator' });
-});
+router.get('/adminLogin', (req, res) => {});
 
 router.post('/adminLogin', passport.authenticate('local'), (req, res) => {
   res.redirect('/adminDashboard/editProfile');

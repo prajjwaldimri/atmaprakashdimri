@@ -1,7 +1,7 @@
 const path = require('path');
 const router = require('express').Router();
 const blogController = require('./controllers/blogController');
-const User = require('./models/user');
+const userController = require('./controllers/userController');
 const multer = require('multer');
 const mongoose = require('mongoose');
 let gridfsFile;
@@ -157,61 +157,13 @@ router.post('/editBlogPost/:blogId', blogController.edit_blog_post_post);
 
 router.get('/deleteBlogPost/:blogId', blogController.delete_blog_post);
 
-router.get('/editProfile', (req, res) => {
-  User.findById(req.user._id, (err, user) => {
-    if (err) return res.statusCode(404);
-    else {
-      res.render('dashboard/editProfile', {
-        pageTitle: 'Edit profile',
-        user: user
-      });
-    }
-  });
-});
+router.get('/editProfile', userController.edit_profile_get);
 
-router.post('/editProfile', (req, res) => {
-  User.findByIdAndUpdate(
-    req.user._id,
-    {
-      fullName: req.body.fullName,
-      shortName: req.body.shortName,
-      email: req.body.email,
-      phoneNumber: req.body.phoneNumber,
-      bio: req.body.bio
-    },
-    (err, blog) => {
-      if (err) {
-        req.flash('danger', 'Error updating profile');
-      } else {
-        req.flash('success', 'Profile Updated successfully');
-      }
-      res.redirect('back');
-    }
-  );
-});
+router.post('/editProfile', userController.edit_profile_post);
 
-router.get('/editPassword', (req, res) => {
-  res.render('dashboard/editPassword', { pageTitle: 'Change Your Password' });
-});
+router.get('/editPassword', userController.edit_password_get);
 
-router.post('/editPassword', (req, res) => {
-  if (!req.body) return res.sendStatus(400);
-
-  if (req.body.newPassword !== req.body.confirmNewPassword) {
-    req.flash('danger', 'New and Confirm Passwords are not same');
-    res.redirect('back');
-  }
-
-  req.user.changePassword(
-    req.body.currentPassword,
-    req.body.newPassword,
-    function (error) {
-      if (error) return res.sendStatus(400);
-      req.flash('success', 'Successfully changed password');
-      res.redirect('back');
-    }
-  );
-});
+router.post('/editPassword', userController.edit_password_post);
 
 router.get('/newBlogPost', blogController.new_blog_post_get);
 
