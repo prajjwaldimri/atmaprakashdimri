@@ -3,7 +3,6 @@ const User = require('./models/user');
 const passport = require('passport');
 
 router.get('/', (req, res) => {
-  req.flash('error', 'Test Flash');
   res.render('index', { pageTitle: 'Home' });
 });
 

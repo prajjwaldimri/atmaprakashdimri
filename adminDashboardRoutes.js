@@ -68,13 +68,13 @@ const imageUpload = multer({
 }).single('uploadedImage');
 
 // Request Authenticator
-// router.use('/', (req, res, next) => {
-//   if (req.user) {
-//     next();
-//   } else {
-//     res.redirect('/');
-//   }
-// });
+router.use('/', (req, res, next) => {
+  if (req.user) {
+    next();
+  } else {
+    res.redirect('/');
+  }
+});
 
 function checkFileType (file, cb, allowedFileTypes) {
   // Check extension
@@ -106,7 +106,7 @@ router.get('/allBlogPosts', (req, res) => {
 router.get('/allUploadedFiles', (req, res) => {
   File.find({}, (err, files) => {
     if (err) {
-      req.flash('error', err);
+      req.flash('danger', err);
       res.redirect('back');
     }
     res.render('dashboard/allUploadedFiles', {
@@ -119,7 +119,7 @@ router.get('/allUploadedFiles', (req, res) => {
 router.get('/allUploadedImages', (req, res) => {
   Image.find({}, (err, images) => {
     if (err) {
-      req.flash('error', err);
+      req.flash('danger', err);
       res.redirect('back');
     }
     console.log(images);
@@ -138,7 +138,7 @@ router.get('/downloadFile/:fileId', (req, res) => {
 router.get('/deleteFile/:fileId', (req, res) => {
   File.unlinkById(req.params.fileId, (err, unlinkedAttachment) => {
     if (err) {
-      req.flash('error', err);
+      req.flash('danger', err);
     }
     req.flash('success', 'File successfully deleted');
     res.redirect('back');
@@ -153,7 +153,7 @@ router.get('/downloadImage/:fileId', (req, res) => {
 router.get('/deleteImage/:fileId', (req, res) => {
   Image.unlinkById(req.params.fileId, (err, unlinkedAttachment) => {
     if (err) {
-      req.flash('error', err);
+      req.flash('danger', err);
     }
     req.flash('success', 'Image successfully deleted');
     res.redirect('back');
@@ -181,7 +181,7 @@ router.post('/editBlogPost/:blogId', (req, res) => {
     },
     (err, blog) => {
       if (err) {
-        req.flash('error', 'Error updating the blog');
+        req.flash('danger', 'Error updating the blog');
       } else {
         req.flash('success', 'Blog Updated successfully');
       }
@@ -193,7 +193,7 @@ router.post('/editBlogPost/:blogId', (req, res) => {
 router.get('/deleteBlogPost/:blogId', (req, res) => {
   Blog.findByIdAndRemove(req.params.blogId, (err, doc) => {
     if (err) {
-      req.flash('error', 'Cannot delete blog');
+      req.flash('danger', 'Cannot delete blog');
     } else {
       req.flash('success', 'Blog deleted successfully');
     }
@@ -213,7 +213,7 @@ router.post('/editPassword', (req, res) => {
   if (!req.body) return res.sendStatus(400);
 
   if (req.body.newPassword !== req.body.confirmNewPassword) {
-    req.flash('error', 'New and Confirm Passwords are not same');
+    req.flash('danger', 'New and Confirm Passwords are not same');
     res.redirect('back');
   }
 
@@ -242,7 +242,7 @@ router.post('/newBlogPost', (req, res) => {
     },
     (err, blogPost) => {
       if (err) {
-        req.flash('error', 'Cannot Save Blog Post');
+        req.flash('danger', 'Cannot Save Blog Post');
       } else {
         req.flash('success', 'Blog Post Saved!');
       }
@@ -258,7 +258,7 @@ router.get('/newFileUpload', (req, res) => {
 router.post('/newFileUpload', (req, res) => {
   fileUpload(req, res, err => {
     if (err) {
-      req.flash('error', 'Error Uploading File');
+      req.flash('danger', 'Error Uploading File');
       console.log(err);
     } else {
       req.flash('success', 'Successfully uploaded file');
@@ -274,7 +274,7 @@ router.get('/newImageUpload', (req, res) => {
 router.post('/newImageUpload', (req, res) => {
   imageUpload(req, res, err => {
     if (err) {
-      req.flash('error', 'Error Uploading File');
+      req.flash('danger', 'Error Uploading File');
       console.log(err);
     } else {
       req.flash('success', 'Successfully uploaded image');
@@ -286,7 +286,7 @@ router.post('/newImageUpload', (req, res) => {
 router.post('/newImageUpload', (req, res) => {
   imageUpload(req, res, err => {
     if (err) {
-      req.flash('error', 'Error uploading image');
+      req.flash('danger', 'Error uploading image');
     } else {
       req.flash('success', 'Successfully uploaded image');
     }
