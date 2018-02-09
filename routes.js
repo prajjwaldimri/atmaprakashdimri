@@ -37,7 +37,7 @@ router.get('/adminLogin', (req, res) => {
 });
 
 router.post('/adminLogin', passport.authenticate('local'), (req, res) => {
-  res.redirect('/adminDashboard/editPassword');
+  res.redirect('/adminDashboard/editProfile');
 });
 
 module.exports = router;

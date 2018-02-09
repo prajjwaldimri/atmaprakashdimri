@@ -1,6 +1,7 @@
 const path = require('path');
 const router = require('express').Router();
 const Blog = require('./models/blog');
+const User = require('./models/user');
 const multer = require('multer');
 const mongoose = require('mongoose');
 let gridfsFile;
@@ -202,7 +203,36 @@ router.get('/deleteBlogPost/:blogId', (req, res) => {
 });
 
 router.get('/editProfile', (req, res) => {
-  res.render('dashboard/editProfile', { pageTitle: 'Edit your Profile' });
+  User.findById(req.user._id, (err, user) => {
+    if (err) return res.statusCode(404);
+    else {
+      res.render('dashboard/editProfile', {
+        pageTitle: 'Edit profile',
+        user: user
+      });
+    }
+  });
+});
+
+router.post('/editProfile', (req, res) => {
+  User.findByIdAndUpdate(
+    req.user._id,
+    {
+      fullName: req.body.fullName,
+      shortName: req.body.shortName,
+      email: req.body.email,
+      phoneNumber: req.body.phoneNumber,
+      bio: req.body.bio
+    },
+    (err, blog) => {
+      if (err) {
+        req.flash('danger', 'Error updating profile');
+      } else {
+        req.flash('success', 'Profile Updated successfully');
+      }
+      res.redirect('back');
+    }
+  );
 });
 
 router.get('/editPassword', (req, res) => {

@@ -1,0 +1,41 @@
+extends dashboardLayout.pug
+
+block content
+  include ../includes/topnav.pug
+  .columns
+    include ../includes/adminDashboard.pug
+
+    .column.is-8
+      include ../includes/notification.pug
+      form(action="/adminDashboard/editProfile", method="post", style="padding-top: 4%")
+        .field
+          label.label Full Name
+          .control
+            input.input(type="text", name="fullName", value=user.fullName)
+
+        .field
+          label.label Short Name
+          .control
+            input.input(type="text", name="shortName", value=user.shortName)
+
+        .field
+          label.label Email
+          .control
+            input.input(type="email", name="email", value=user.email)
+
+        .field
+          label.label Phone Number
+          .control
+            input.input(type="tel", name="phoneNumber", value=user.phoneNumber)
+
+        .field
+          label.label Bio
+          .control
+            textarea.textarea(name="bio")=user.bio
+        
+        .field
+          .control
+            button.button.is-link(type="submit")
+              span.icon
+                i.fas.fa-key
+              span Update Profile
