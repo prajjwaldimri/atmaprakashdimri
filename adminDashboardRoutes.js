@@ -1,6 +1,6 @@
 const path = require('path');
 const router = require('express').Router();
-const Blog = require('./models/blog');
+const blogController = require('./controllers/blogController');
 const User = require('./models/user');
 const multer = require('multer');
 const mongoose = require('mongoose');
@@ -92,17 +92,7 @@ function checkFileType (file, cb, allowedFileTypes) {
   }
 }
 
-router.get('/allBlogPosts', (req, res) => {
-  let blogPosts = [];
-  Blog.find({}, (err, docs) => {
-    if (err) return res.sendStatus(300);
-    blogPosts = docs;
-    res.render('dashboard/allBlogPosts', {
-      pageTitle: 'List of published blog posts',
-      blogPosts: blogPosts
-    });
-  });
-});
+router.get('/allBlogPosts', blogController.blog_list);
 
 router.get('/allUploadedFiles', (req, res) => {
   File.find({}, (err, files) => {
@@ -161,46 +151,11 @@ router.get('/deleteImage/:fileId', (req, res) => {
   });
 });
 
-router.get('/editBlogPost/:blogId', (req, res) => {
-  Blog.findById(req.params.blogId, (err, blog) => {
-    if (err) return res.statusCode(404);
-    else {
-      res.render('dashboard/editBlogPost', {
-        pageTitle: 'Edit existing blog post',
-        blog: blog
-      });
-    }
-  });
-});
+router.get('/editBlogPost/:blogId', blogController.edit_blog_post_get);
 
-router.post('/editBlogPost/:blogId', (req, res) => {
-  Blog.findByIdAndUpdate(
-    req.params.blogId,
-    {
-      title: req.body.blogTitle,
-      content: req.body.blogContent
-    },
-    (err, blog) => {
-      if (err) {
-        req.flash('danger', 'Error updating the blog');
-      } else {
-        req.flash('success', 'Blog Updated successfully');
-      }
-      res.redirect('/adminDashboard/allBlogPosts');
-    }
-  );
-});
+router.post('/editBlogPost/:blogId', blogController.edit_blog_post_post);
 
-router.get('/deleteBlogPost/:blogId', (req, res) => {
-  Blog.findByIdAndRemove(req.params.blogId, (err, doc) => {
-    if (err) {
-      req.flash('danger', 'Cannot delete blog');
-    } else {
-      req.flash('success', 'Blog deleted successfully');
-    }
-    res.redirect('/adminDashboard/allBlogPosts');
-  });
-});
+router.get('/deleteBlogPost/:blogId', blogController.delete_blog_post);
 
 router.get('/editProfile', (req, res) => {
   User.findById(req.user._id, (err, user) => {
@@ -258,28 +213,9 @@ router.post('/editPassword', (req, res) => {
   );
 });
 
-router.get('/newBlogPost', (req, res) => {
-  res.render('dashboard/newBlogPost', { pageTitle: 'Admin Dashboard' });
-});
+router.get('/newBlogPost', blogController.new_blog_post_get);
 
-router.post('/newBlogPost', (req, res) => {
-  if (!req.body) return res.sendStatus(400);
-
-  Blog.create(
-    {
-      title: req.body.blogTitle,
-      content: req.body.blogContent
-    },
-    (err, blogPost) => {
-      if (err) {
-        req.flash('danger', 'Cannot Save Blog Post');
-      } else {
-        req.flash('success', 'Blog Post Saved!');
-      }
-      res.redirect('back');
-    }
-  );
-});
+router.post('/newBlogPost', blogController.new_blog_post_post);
 
 router.get('/newFileUpload', (req, res) => {
   res.render('dashboard/newFileUpload', { pageTitle: 'Upload a file' });
