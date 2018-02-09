@@ -1,13 +1,66 @@
+const path = require('path');
 const router = require('express').Router();
 const Blog = require('./models/blog');
-
-router.use('/', (req, res, next) => {
-  if (req.user) {
-    next();
-  } else {
-    res.redirect('/');
+const multer = require('multer');
+const GridFsStorage = require('multer-gridfs-storage');
+const fileStorage = new GridFsStorage({
+  url: 'mongodb://localhost/passport_local_mongoose',
+  file: (req, file) => {
+    return {
+      filename:
+        file.originalname + '-' + Date.now() + path.extname(file.originalname),
+      bucketName: 'files'
+    };
   }
 });
+const imageStorage = new GridFsStorage({
+  url: 'mongodb://localhost/passport_local_mongoose',
+  file: (req, file) => {
+    return {
+      filename:
+        file.originalname + '-' + Date.now() + path.extname(file.originalname),
+      bucketName: 'images'
+    };
+  }
+});
+const fileUpload = multer({
+  storage: fileStorage,
+  fileFilter: function (req, file, cb) {
+    checkFileType(file, cb, /doc|docx|xls|xlsx|ppt|pdf|desktop/);
+  }
+}).single('uploadedFile');
+
+const imageUpload = multer({
+  storage: imageStorage,
+  limits: { fileSize: 50000000 },
+  fileFilter: function (req, file, cb) {
+    checkFileType(file, cb, /jpeg|jpg|png|gif/);
+  }
+}).single('uploadedImage');
+
+// Request Authenticator
+// router.use('/', (req, res, next) => {
+//   if (req.user) {
+//     next();
+//   } else {
+//     res.redirect('/');
+//   }
+// });
+
+function checkFileType (file, cb, allowedFileTypes) {
+  // Check extension
+  const extName = allowedFileTypes.test(
+    path.extname(file.originalname).toLowerCase()
+  );
+  // Check MIME-TYPE
+  const mimeType = allowedFileTypes.test(file.mimetype);
+
+  if (extName && mimeType) {
+    return cb(null, true);
+  } else {
+    cb(new Error('File Type Not allowed!'));
+  }
+}
 
 router.get('/allBlogPosts', (req, res) => {
   let blogPosts = [];
@@ -96,9 +149,6 @@ router.post('/editPassword', (req, res) => {
 });
 
 router.get('/newBlogPost', (req, res) => {
-  // if (!req.user) {
-  //   res.redirect('/');
-  // }
   res.render('dashboard/newBlogPost', { pageTitle: 'Admin Dashboard' });
 });
 
@@ -125,8 +175,31 @@ router.get('/newFileUpload', (req, res) => {
   res.render('dashboard/newFileUpload', { pageTitle: 'Upload a file' });
 });
 
+router.post('/newFileUpload', (req, res) => {
+  fileUpload(req, res, err => {
+    if (err) {
+      req.flash('error', 'Error Uploading File');
+      console.log(err);
+    } else {
+      req.flash('success', 'Successfully uploaded file');
+    }
+    res.redirect('/adminDashboard/allUploadedFiles');
+  });
+});
+
 router.get('/newImageUpload', (req, res) => {
   res.render('dashboard/newImageUpload', { pageTitle: 'Upload an image' });
+});
+
+router.post('/newImageUpload', (req, res) => {
+  imageUpload(req, res, err => {
+    if (err) {
+      req.flash('error', 'Error uploading image');
+    } else {
+      req.flash('success', 'Successfully uploaded image');
+    }
+    res.redirect('/adminDashboard/allUploadedImages');
+  });
 });
 
 module.exports = router;

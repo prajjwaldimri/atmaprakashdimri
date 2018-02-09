@@ -6,13 +6,18 @@ block content
     include ../includes/adminDashboard.pug
 
     .column.is-8
-      form(action="/newBlogPost", method="post", style="padding-top: 4%")
+      include ../includes/notification.pug
+      form(action="/adminDashboard/newFileUpload", method="post", style="padding-top: 4%", enctype="multipart/form-data")
+        
         .field
-          label.label Blog Post Title
-          .control
-            input.input(type="text", name="blogTitle")
+          .file.has-name.is-fullwidth
+            label.file-label
+              input.file-input(type="file", name="uploadedFile")
+              span.file-cta
+                span.file-icon
+                  i.fas.fa-upload
+                span.file-label Choose a file...
+              span.file-name
 
         .field
-          label.label Blog Post Content
-          .control
-            textarea.textarea(name="blogContent")
+          button.button.is-info(type="submit") Upload File
