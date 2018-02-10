@@ -3,4 +3,6 @@ extend layout.pug
 block content
   include includes/topnav.pug
   include includes/notification.pug
-  h1.title Hello
+  div(id="app")
+    h1.heading {{ message }}
+    h1 {{greet()}}

@@ -1,5 +1,5 @@
 for message in flash
-  .notification(class='is-'+message.type)
-    button.delete
+  .notification(class='is-'+message.type, v-if="show")
+    button.delete(v-on:click="disappear")
     | #{message.message}
 

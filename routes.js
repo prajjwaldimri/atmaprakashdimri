@@ -4,6 +4,7 @@ const fileController = require('./controllers/fileController');
 const passport = require('passport');
 
 router.get('/', (req, res) => {
+  req.flash('danger', 'Yeah');
   res.render('index', { pageTitle: 'Home' });
 });
 

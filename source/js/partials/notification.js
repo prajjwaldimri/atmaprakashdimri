@@ -1,9 +1,12 @@
-var notifications = document.querySelectorAll('.notification');
-
-notifications.forEach(notification => {
-  var deleteButton = notification.querySelector('.delete');
-  console.log(deleteButton);
-  deleteButton.onclick = () => {
-    notification.style.display = 'none';
-  };
+import Vue from 'vue';
+var notification = new Vue({
+  el: '.notification',
+  data: {
+    show: true
+  },
+  methods: {
+    disappear: function () {
+      this.show = false;
+    }
+  }
 });
