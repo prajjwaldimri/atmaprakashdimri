@@ -12,6 +12,14 @@ gulp.task('js', function () {
     .src('./source/js/*.js')
     .pipe(babel({ presets: ['env'] }))
     .pipe(uglify())
+    .pipe(gulp.dest('./public/js'));
+});
+
+gulp.task('js-concat', function () {
+  return gulp
+    .src('./source/js/partials/*.js')
+    .pipe(babel({ presets: ['env'] }))
+    .pipe(uglify())
     .pipe(concat('main.js'))
     .pipe(gulp.dest('./public/js'));
 });
@@ -28,6 +36,7 @@ gulp.task('sass', function () {
 
 gulp.task('watch', function () {
   gulp.watch('./source/js/*.js', ['js']);
+  gulp.watch('./source/js/partials/*.js', ['js-concat']);
   gulp.watch('./source/scss/*.scss', ['sass']);
 });
 

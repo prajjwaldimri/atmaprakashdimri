@@ -1,5 +1,6 @@
 const router = require('express').Router();
 const userController = require('./controllers/userController');
+const fileController = require('./controllers/fileController');
 const passport = require('passport');
 
 router.get('/', (req, res) => {
@@ -20,10 +21,15 @@ router.get('/blog', (req, res) => {
   res.render('blog', { pageTitle: 'Blog' });
 });
 
-router.get('/adminLogin', (req, res) => {});
+router.get('/adminLogin', (req, res) => {
+  res.render('/adminLogin', { pageTitle: 'Admin Login' });
+});
 
 router.post('/adminLogin', passport.authenticate('local'), (req, res) => {
   res.redirect('/adminDashboard/editProfile');
 });
+
+// AJAX Routes
+router.get('/allImages', fileController.file_list_json);
 
 module.exports = router;

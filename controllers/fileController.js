@@ -92,6 +92,16 @@ exports.file_list = (req, res) => {
   });
 };
 
+exports.file_list_json = (req, res) => {
+  Image.find({}, (err, images) => {
+    if (err) {
+      req.flash('danger', err);
+      res.redirect('back');
+    }
+    res.json(images);
+  });
+};
+
 exports.image_list = (req, res) => {
   Image.find({}, (err, images) => {
     if (err) {
