@@ -4,4 +4,10 @@
 .notification {
   border-radius: 0; }
 
+input:valid {
+  border-color: #23d160; }
+
+input:invalid {
+  border-color: #ff3860; }
+
 /*# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiIuLi9jc3MvbWFpbi5jc3MiLCJzb3VyY2VSb290IjoiIn0=*/

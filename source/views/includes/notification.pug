@@ -1,5 +1,10 @@
 for message in flash
-  .notification(class='is-'+message.type, v-if="show")
-    button.delete(v-on:click="disappear")
-    | #{message.message}
+  if(message.type==='error')
+    .notification(class='is-danger', v-if="show")
+      button.delete(v-on:click="disappear")
+      | #{message.message}
+  else
+    .notification(class='is-'+message.type, v-if="show")
+      button.delete(v-on:click="disappear")
+      | #{message.message}
 
