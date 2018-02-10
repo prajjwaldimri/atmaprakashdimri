@@ -1,9 +1,41 @@
 const path = require('path');
+const CleanWebpackPlugin = require('clean-webpack-plugin');
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const extractPlugin = new ExtractTextPlugin('../css/[name].css');
 
 module.exports = {
-  entry: './source/js/main.js',
+  context: path.resolve(__dirname, 'source/js'),
+  entry: {
+    gallery: './gallery.js',
+    main: './main.js'
+  },
   output: {
-    filename: 'bundle.js',
+    filename: '[name].bundle.js',
     path: path.resolve(__dirname, 'public/js')
+  },
+  devtool: 'inline-source-map',
+  plugins: [new CleanWebpackPlugin(['public']), extractPlugin],
+  module: {
+    rules: [
+      {
+        test: /\.js$/,
+        include: /source/,
+        exclude: /node_modules/,
+        use: {
+          loader: 'babel-loader',
+          options: {
+            presets: ['env']
+          }
+        }
+      },
+      {
+        test: /\.scss$/,
+        include: /source/,
+        use: extractPlugin.extract({
+          use: ['css-loader', 'sass-loader'],
+          fallback: 'style-loader'
+        })
+      }
+    ]
   }
 };
