@@ -44,16 +44,12 @@ router.get('/newBlogPost', blogController.new_blog_post_get);
 
 router.post('/newBlogPost', blogController.new_blog_post_post);
 
-router.get('/newFileUpload', (req, res) => {
-  res.render('dashboard/newFileUpload', { pageTitle: 'Upload a file' });
-});
+router.get('/newFileUpload', fileController.file_upload_get);
 
-router.post('/newFileUpload', fileController.file_upload);
+router.post('/newFileUpload', fileController.file_upload_post);
 
-router.get('/newImageUpload', (req, res) => {
-  res.render('dashboard/newImageUpload', { pageTitle: 'Upload an image' });
-});
+router.get('/newImageUpload', fileController.image_upload_get);
 
-router.post('/newImageUpload', fileController.image_upload);
+router.post('/newImageUpload', fileController.image_upload_post);
 
 module.exports = router;

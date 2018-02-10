@@ -136,7 +136,11 @@ exports.image_delete = (req, res) => {
   });
 };
 
-exports.file_upload = (req, res) => {
+exports.file_upload_get = (req, res) => {
+  res.render('dashboard/newFileUpload', { pageTitle: 'Upload a file' });
+};
+
+exports.file_upload_post = (req, res) => {
   fileUpload(req, res, err => {
     if (err) {
       req.flash('danger', 'Error Uploading File');
@@ -148,7 +152,11 @@ exports.file_upload = (req, res) => {
   });
 };
 
-exports.image_upload = (req, res) => {
+exports.image_upload_get = (req, res) => {
+  res.render('dashboard/newImageUpload', { pageTitle: 'Upload an image' });
+};
+
+exports.image_upload_post = (req, res) => {
   imageUpload(req, res, err => {
     if (err) {
       req.flash('danger', 'Error Uploading File');
