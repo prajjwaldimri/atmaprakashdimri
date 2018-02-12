@@ -108,7 +108,6 @@ exports.image_list = (req, res) => {
       req.flash('danger', err);
       res.redirect('back');
     }
-    console.log(images);
     res.render('dashboard/allUploadedImages', {
       pageTitle: 'List of uploaded files on server',
       images: images

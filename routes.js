@@ -5,6 +5,7 @@ const passport = require('passport');
 
 router.get('/', (req, res) => {
   req.flash('danger', 'Yeah');
+  req.flash('success', 'Hell yeah!');
   res.render('index', { pageTitle: 'Home' });
 });
 
@@ -39,5 +40,7 @@ router.post(
 
 // AJAX Routes
 router.get('/allImages', fileController.file_list_json);
+
+router.get('/showImage/:fileId', fileController.image_download);
 
 module.exports = router;

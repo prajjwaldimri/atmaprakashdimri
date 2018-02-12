@@ -1,5 +1,10 @@
-import axios from 'axios';
+import Vue from 'vue';
+import UserGallery from '../components/UserGallery.vue';
+import VueResource from 'vue-resource';
 
-axios.get('/allImages').then(response => {
-  console.log(response);
+Vue.use(VueResource);
+
+var gallery = new Vue({
+  el: '#galleryContainer',
+  render: h => h(UserGallery)
 });

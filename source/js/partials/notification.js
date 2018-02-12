@@ -1,12 +1,19 @@
 import Vue from 'vue';
-var notification = new Vue({
-  el: '.notification',
-  data: {
-    show: true
-  },
-  methods: {
-    disappear: function () {
-      this.show = false;
-    }
-  }
-});
+
+const notifications = document.querySelectorAll('.notification');
+
+Array.prototype.forEach.call(
+  notifications,
+  (el, index) =>
+    new Vue({
+      el,
+      data: {
+        show: true
+      },
+      methods: {
+        disappear: function () {
+          this.show = false;
+        }
+      }
+    })
+);
