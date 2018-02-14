@@ -9,7 +9,7 @@
           .media
             .media-left
               figure.image.is-48x48
-                img(src="https://bulma.io/images/placeholders/96x96.png", alt="Author's Image")
+                img(v-bind:src="'/showImage/' + blog.author.profileImageId", alt="Author's Image")
             .media-content
               p.title.is-4 {{blog.title}}
               p.subtitle.is-6 @atmaprakashdimri
@@ -56,6 +56,7 @@ export default {
       this.$http.get("/allBlogPosts").then(
         response => {
           this.blogs = response.body;
+          console.log(this.blogs[0].author);
           this.blogs.forEach(blog => {
             blog.updated_at = moment(blog.updated_at).format(
               "MMMM Do YYYY, h:mm a"

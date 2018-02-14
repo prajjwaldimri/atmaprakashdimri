@@ -1,23 +1,27 @@
 const Blog = require('../models/blog');
 
 exports.blog_list = (req, res) => {
-  Blog.find({}, (err, docs) => {
-    if (err) return res.sendStatus(300);
-    res.render('dashboard/allBlogPosts', {
-      pageTitle: 'List of published blog posts',
-      blogPosts: docs
+  Blog.find({})
+    .populate('author')
+    .exec((err, docs) => {
+      if (err) return res.sendStatus(300);
+      res.render('dashboard/allBlogPosts', {
+        pageTitle: 'List of published blog posts',
+        blogPosts: docs
+      });
     });
-  });
 };
 
 exports.blog_list_json = (req, res) => {
-  Blog.find({}, (err, blogPosts) => {
-    if (err) {
-      req.flash('danger', err);
-      res.redirect('back');
-    }
-    res.json(blogPosts);
-  });
+  Blog.find({})
+    .populate('author')
+    .exec((err, blogPosts) => {
+      if (err) {
+        req.flash('danger', err);
+        res.redirect('back');
+      }
+      res.json(blogPosts);
+    });
 };
 
 exports.blog_show = (req, res) => {
@@ -82,6 +86,7 @@ exports.new_blog_post_post = (req, res) => {
     {
       title: req.body.blogTitle,
       content: req.body.blogContent,
+      // Currently only admin can be the author
       author: req.user._id
     },
     (err, blogPost) => {
