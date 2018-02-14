@@ -1,6 +1,18 @@
 const User = require('../models/user');
 const fileController = require('../controllers/fileController');
 
+exports.about_details = (req, res) => {
+  User.findOne({ username: 'dimri_apr' }, (err, user) => {
+    if (err) {
+      req.flash('danger', 'Unable to find user details');
+      console.log(err);
+    }
+    user._id = null;
+    user.username = undefined;
+    res.json(user);
+  });
+};
+
 exports.edit_profile_get = (req, res) => {
   User.findById(req.user._id, (err, user) => {
     if (err) return res.statusCode(404);

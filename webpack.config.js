@@ -8,7 +8,8 @@ module.exports = {
   entry: {
     userblog: './userblog.js',
     gallery: './gallery.js',
-    main: './main.js'
+    main: './main.js',
+    about: './about.js'
   },
   output: {
     filename: '[name].bundle.js',

@@ -81,7 +81,8 @@ exports.new_blog_post_post = (req, res) => {
   Blog.create(
     {
       title: req.body.blogTitle,
-      content: req.body.blogContent
+      content: req.body.blogContent,
+      author: req.user._id
     },
     (err, blogPost) => {
       if (err) {

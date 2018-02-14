@@ -5,7 +5,7 @@ const blogController = require('./controllers/blogController');
 const passport = require('passport');
 
 router.get('/', (req, res) => {
-  res.render('index', { pageTitle: 'Home' });
+  res.redirect('/about');
 });
 
 router.post('/adminRegister', userController.register_user_post);
@@ -45,5 +45,7 @@ router.get('/showImage/:fileId', fileController.image_download);
 router.get('/allBlogPosts', blogController.blog_list_json);
 
 router.get('/blog/:blogId', blogController.blog_show);
+
+router.get('/getAboutDetails', userController.about_details);
 
 module.exports = router;
