@@ -92,16 +92,6 @@ exports.file_list = (req, res) => {
   });
 };
 
-exports.file_list_json = (req, res) => {
-  Image.find({}, (err, images) => {
-    if (err) {
-      req.flash('danger', err);
-      res.redirect('back');
-    }
-    res.json(images);
-  });
-};
-
 exports.image_list = (req, res) => {
   Image.find({}, (err, images) => {
     if (err) {
@@ -112,6 +102,16 @@ exports.image_list = (req, res) => {
       pageTitle: 'List of uploaded files on server',
       images: images
     });
+  });
+};
+
+exports.image_list_json = (req, res) => {
+  Image.find({}, (err, images) => {
+    if (err) {
+      req.flash('danger', err);
+      res.redirect('back');
+    }
+    res.json(images);
   });
 };
 
@@ -174,5 +174,17 @@ exports.image_upload_post = (req, res) => {
       req.flash('success', 'Successfully uploaded image');
     }
     res.redirect('/adminDashboard/allUploadedImages');
+  });
+};
+
+exports.upload_image = (req, res) => {
+  return new Promise((resolve, reject) => {
+    imageUpload(req, res, err => {
+      if (err) {
+        req.flash('danger', 'Error Uploading File');
+        reject(err);
+      }
+      resolve(req.file.id);
+    });
   });
 };

@@ -7,7 +7,8 @@ const User = new mongoose.Schema({
   email: String,
   admin: Boolean,
   phoneNumber: String,
-  bio: String
+  bio: String,
+  profileImageId: String
 });
 
 User.plugin(passportLocalMongoose);

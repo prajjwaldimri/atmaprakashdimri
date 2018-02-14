@@ -1,0 +1,32 @@
+extends dashboardLayout.pug
+
+block content
+  include ../includes/topnav.pug
+  .columns
+    include ../includes/adminDashboard.pug
+
+    .column.is-8
+      include ../includes/notification.pug
+
+      .column.is-4.is-offset-4
+        .card
+          .card-header
+            header.card-header-title Current Profile Picture
+          .card-image
+            figure.image.is-256x256
+              img(src="/showImage/" + profileImageId)
+
+      form(action="/adminDashboard/editProfileImage", method="post", style="padding-top: 4%", enctype="multipart/form-data")
+        
+        .field
+          .file.has-name.is-fullwidth
+            label.file-label
+              input.file-input(type="file", name="uploadedImage")
+              span.file-cta
+                span.file-icon
+                  i.fas.fa-upload
+                span.file-label Choose an image...
+              span.file-name
+
+        .field
+          button.button.is-info(type="submit") Upload Image

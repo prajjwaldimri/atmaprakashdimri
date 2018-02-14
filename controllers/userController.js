@@ -1,4 +1,5 @@
 const User = require('../models/user');
+const fileController = require('../controllers/fileController');
 
 exports.edit_profile_get = (req, res) => {
   User.findById(req.user._id, (err, user) => {
@@ -21,6 +22,31 @@ exports.edit_profile_post = (req, res) => {
       email: req.body.email,
       phoneNumber: req.body.phoneNumber,
       bio: req.body.bio
+    },
+    (err, blog) => {
+      if (err) {
+        req.flash('danger', 'Error updating profile');
+      } else {
+        req.flash('success', 'Profile Updated successfully');
+      }
+      res.redirect('back');
+    }
+  );
+};
+
+exports.edit_profile_image_get = (req, res) => {
+  res.render('dashboard/editProfileImage', {
+    pageTitle: 'Upload your profile image',
+    profileImageId: req.user.profileImageId
+  });
+};
+
+exports.edit_profile_image_post = async (req, res) => {
+  var profileImageId = await fileController.upload_image(req, res);
+  User.findByIdAndUpdate(
+    req.user._id,
+    {
+      profileImageId: profileImageId
     },
     (err, blog) => {
       if (err) {

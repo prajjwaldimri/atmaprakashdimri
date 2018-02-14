@@ -26,6 +26,7 @@
     "express-session": "^1.15.6",
     "flash": "^1.1.0",
     "gridfs-stream": "^1.1.1",
+    "moment": "^2.20.1",
     "mongodb": "^2.2.33",
     "mongoose": "^5.0.4",
     "mongoose-gridfs": "^0.3.2",

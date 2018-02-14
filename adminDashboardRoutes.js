@@ -36,6 +36,10 @@ router.get('/editProfile', userController.edit_profile_get);
 
 router.post('/editProfile', userController.edit_profile_post);
 
+router.get('/editProfileImage', userController.edit_profile_image_get);
+
+router.post('/editProfileImage', userController.edit_profile_image_post);
+
 router.get('/editPassword', userController.edit_password_get);
 
 router.post('/editPassword', userController.edit_password_post);

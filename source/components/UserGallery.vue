@@ -12,7 +12,9 @@
       
 </template>
 
-<style scoped>
+<style lang="scss" scoped>
+@import "../scss/main.scss";
+
 #galleryContainer {
   padding-top: 2%;
   display: grid;

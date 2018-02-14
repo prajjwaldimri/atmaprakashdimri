@@ -1,14 +1,32 @@
 const Blog = require('../models/blog');
 
 exports.blog_list = (req, res) => {
-  let blogPosts = [];
   Blog.find({}, (err, docs) => {
     if (err) return res.sendStatus(300);
-    blogPosts = docs;
     res.render('dashboard/allBlogPosts', {
       pageTitle: 'List of published blog posts',
-      blogPosts: blogPosts
+      blogPosts: docs
     });
+  });
+};
+
+exports.blog_list_json = (req, res) => {
+  Blog.find({}, (err, blogPosts) => {
+    if (err) {
+      req.flash('danger', err);
+      res.redirect('back');
+    }
+    res.json(blogPosts);
+  });
+};
+
+exports.blog_show = (req, res) => {
+  Blog.findById(req.params.blogId, (err, blog) => {
+    if (err) {
+      req.flash('danger', err);
+      res.redirect('back');
+    }
+    res.render('blog', { pageTitle: blog.title, blog: blog });
   });
 };
 

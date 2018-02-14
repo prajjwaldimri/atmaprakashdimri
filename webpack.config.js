@@ -6,6 +6,7 @@ const extractPlugin = new ExtractTextPlugin('../css/[name].css');
 module.exports = {
   context: path.resolve(__dirname, 'source/js'),
   entry: {
+    userblog: './userblog.js',
     gallery: './gallery.js',
     main: './main.js'
   },
