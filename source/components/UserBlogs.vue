@@ -56,7 +56,6 @@ export default {
       this.$http.get("/allBlogPosts").then(
         response => {
           this.blogs = response.body;
-          console.log(this.blogs[0].author);
           this.blogs.forEach(blog => {
             blog.updated_at = moment(blog.updated_at).format(
               "MMMM Do YYYY, h:mm a"

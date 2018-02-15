@@ -49,7 +49,7 @@ exports.edit_profile_post = (req, res) => {
 exports.edit_profile_image_get = (req, res) => {
   res.render('dashboard/editProfileImage', {
     pageTitle: 'Upload your profile image',
-    profileImageId: req.user.profileImageId
+    profileImageId: req.user.profileImageId || null
   });
 };
 
