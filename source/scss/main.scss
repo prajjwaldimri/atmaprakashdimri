@@ -1,8 +1,25 @@
+@import "~bulma/sass/utilities/initial-variables";
+@import "~bulma/sass/utilities/functions";
+
+// Customizing bulma colors
+
+$black: #000f08;
+$dark: #292f36;
+$danger: #ff6978;
+$warning: #f6bd60;
+$primary: #554971;
+$success: #06d6a0;
+$info: #2274a5;
+$link: #031a6b;
+
+// Custom component styling
+$footer-background-color: $dark;
+
 @import "~bulma/bulma";
 @import "~bulma-extensions/bulma-divider/dist/bulma-divider";
 
 html {
-  background-color: #efefef;
+  background-color: #fffcf9;
 }
 
 .notification {
@@ -10,9 +27,9 @@ html {
 }
 
 input:valid {
-  border-color: #23d160;
+  border-color: $success;
 }
 
 input:invalid {
-  border-color: #ff3860;
+  border-color: $danger;
 }

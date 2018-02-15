@@ -1,5 +1,6 @@
 const User = require('../models/user');
 const fileController = require('../controllers/fileController');
+const nl2br = require('nl2br');
 
 exports.about_details = (req, res) => {
   User.findOne({ username: 'dimri_apr' }, (err, user) => {
@@ -33,7 +34,7 @@ exports.edit_profile_post = (req, res) => {
       shortName: req.body.shortName,
       email: req.body.email,
       phoneNumber: req.body.phoneNumber,
-      bio: req.body.bio
+      bio: nl2br(req.body.bio, false)
     },
     (err, blog) => {
       if (err) {
