@@ -6,8 +6,10 @@ html(lang="en" class="has-navbar-fixed-top")
     title=pageTitle
     script(defer src="https://use.fontawesome.com/releases/v5.0.0/js/all.js")
     link(rel="stylesheet", href="/css/main.css")
-    
+
 body
   block content
+  div(id="app")
   include includes/footer.pug
-  script(src="/js/main.bundle.js")  
+
+  script(src="/js/main.bundle.js")

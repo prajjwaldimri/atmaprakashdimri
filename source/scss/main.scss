@@ -1,7 +1,6 @@
 @import "~bulma/sass/utilities/initial-variables";
 @import "~bulma/sass/utilities/functions";
-
-// Customizing bulma colors
+@import "~animate.css";
 
 $black: #000f08;
 $dark: #292f36;
@@ -9,14 +8,18 @@ $danger: #ff6978;
 $warning: #f6bd60;
 $primary: #554971;
 $success: #06d6a0;
-$info: #2274a5;
-$link: #031a6b;
+$info: #38a5db;
 
 // Custom component styling
 $footer-background-color: $dark;
+$navbar-height: 5rem;
+$family-sans-serif: BlinkMacSystemFont, -apple-system, "Roboto", "Segoe UI",
+  "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+  "Helvetica", "Arial", sans-serif;
 
 @import "~bulma/bulma";
 @import "~bulma-extensions/bulma-divider/dist/bulma-divider";
+@import url("https://fonts.googleapis.com/css?family=Patua+One");
 
 html {
   background-color: #fffcf9;
@@ -32,4 +35,9 @@ input:valid {
 
 input:invalid {
   border-color: $danger;
+}
+
+.footer {
+  padding-top: 2rem;
+  padding-bottom: 2rem;
 }

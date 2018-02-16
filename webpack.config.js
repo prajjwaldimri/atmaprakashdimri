@@ -2,21 +2,23 @@ const path = require('path');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const extractPlugin = new ExtractTextPlugin('../css/[name].css');
+const webpack = require('webpack');
 
 module.exports = {
   context: path.resolve(__dirname, 'source/js'),
   entry: {
-    userblog: './userblog.js',
-    gallery: './gallery.js',
-    main: './main.js',
-    about: './about.js'
+    main: './main.js'
   },
   output: {
     filename: '[name].bundle.js',
     path: path.resolve(__dirname, 'public/js')
   },
   devtool: 'inline-source-map',
-  plugins: [new CleanWebpackPlugin(['public']), extractPlugin],
+  plugins: [
+    new CleanWebpackPlugin(['public']),
+    extractPlugin,
+    new webpack.optimize.UglifyJsPlugin()
+  ],
   module: {
     rules: [
       {
@@ -34,7 +36,10 @@ module.exports = {
         test: /\.scss$/,
         include: /source/,
         use: extractPlugin.extract({
-          use: ['css-loader', 'sass-loader'],
+          use: [
+            { loader: 'css-loader', options: { minimize: true } },
+            'sass-loader'
+          ],
           fallback: 'style-loader'
         })
       },
