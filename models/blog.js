@@ -4,7 +4,8 @@ const Blog = new mongoose.Schema(
   {
     title: String,
     content: String,
-    author: { type: mongoose.Schema.Types.ObjectId, ref: 'User' }
+    author: { type: mongoose.Schema.Types.ObjectId, ref: 'User' },
+    heroImageId: String
   },
   {
     timestamps: {

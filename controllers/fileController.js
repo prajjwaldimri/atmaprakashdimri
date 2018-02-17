@@ -190,7 +190,7 @@ exports.upload_image = (req, res) => {
         req.flash('danger', 'Error Uploading File');
         reject(err);
       }
-      resolve(req.file.id);
+      resolve(req);
     });
   });
 };

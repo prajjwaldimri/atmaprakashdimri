@@ -1,13 +1,22 @@
 extends dashboardLayout.pug
 
 block content
-  include ../includes/topnav.pug
   .columns
     include ../includes/adminDashboard.pug
 
     .column.is-8
       include ../includes/notification.pug
-      form(action="", method="post", style="padding-top: 4%")
+      form(action="", method="post", style="padding-top: 4%", enctype="multipart/form-data")
+        .field
+          .file.has-name.is-fullwidth
+            label.file-label
+              input.file-input(type="file", name="uploadedImage")
+              span.file-cta
+                span.file-icon
+                  i.fas.fa-upload
+                span.file-label Choose an image...
+              span.file-name
+
         .field
           label.label Blog Post Title
           .control

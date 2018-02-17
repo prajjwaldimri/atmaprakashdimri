@@ -3,9 +3,10 @@ html(lang="en" class="has-navbar-fixed-top")
   head
     meta(charset="utf-8")
     meta(name="viewport", content="width=device-width, initial-scale=1")
-    title=pageTitle    
+    title=pageTitle
     script(defer src="https://use.fontawesome.com/releases/v5.0.0/js/all.js")
     link(rel="stylesheet", href="/css/main.css")
 body
+  include ../includes/topnav.pug
   block content
   script(src="/js/main.bundle.js")

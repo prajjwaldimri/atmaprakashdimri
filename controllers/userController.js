@@ -55,11 +55,11 @@ exports.edit_profile_image_get = (req, res) => {
 };
 
 exports.edit_profile_image_post = async (req, res) => {
-  var profileImageId = await fileController.upload_image(req, res);
+  var profileImage = await fileController.upload_image(req, res);
   User.findByIdAndUpdate(
     req.user._id,
     {
-      profileImageId: profileImageId
+      profileImageId: profileImage.file.id
     },
     (err, blog) => {
       if (err) {

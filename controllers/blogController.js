@@ -1,4 +1,5 @@
 const Blog = require('../models/blog');
+const fileController = require('./fileController');
 
 exports.blog_list = (req, res) => {
   Blog.find({})
@@ -46,12 +47,14 @@ exports.edit_blog_post_get = (req, res) => {
   });
 };
 
-exports.edit_blog_post_post = (req, res) => {
+exports.edit_blog_post_post = async (req, res) => {
+  var imageRequest = await fileController.upload_image(req, res);
   Blog.findByIdAndUpdate(
-    req.params.blogId,
+    imageRequest.params.blogId,
     {
-      title: req.body.blogTitle,
-      content: req.body.blogContent
+      title: imageRequest.body.blogTitle,
+      content: imageRequest.body.blogContent,
+      heroImageId: imageRequest.file.id
     },
     (err, blog) => {
       if (err) {
