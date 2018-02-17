@@ -49,22 +49,30 @@ exports.edit_blog_post_get = (req, res) => {
 
 exports.edit_blog_post_post = async (req, res) => {
   var imageRequest = await fileController.upload_image(req, res);
-  Blog.findByIdAndUpdate(
-    imageRequest.params.blogId,
-    {
-      title: imageRequest.body.blogTitle,
-      content: imageRequest.body.blogContent,
-      heroImageId: imageRequest.file.id
-    },
-    (err, blog) => {
-      if (err) {
-        req.flash('danger', 'Error updating the blog');
-      } else {
-        req.flash('success', 'Blog Updated successfully');
+  Blog.findById(imageRequest.params.blogId, (err, blog) => {
+    if (err) return res.statusCode(404);
+    else {
+      if (imageRequest.file === undefined) {
+        imageRequest.file = { id: blog.heroImageId || '' };
       }
-      res.redirect('/adminDashboard/allBlogPosts');
+      Blog.findByIdAndUpdate(
+        imageRequest.params.blogId,
+        {
+          title: imageRequest.body.blogTitle,
+          content: imageRequest.body.blogContent,
+          heroImageId: imageRequest.file.id
+        },
+        (err, blog) => {
+          if (err) {
+            req.flash('danger', 'Error updating the blog');
+          } else {
+            req.flash('success', 'Blog Updated successfully');
+          }
+          res.redirect('/adminDashboard/allBlogPosts');
+        }
+      );
     }
-  );
+  });
 };
 
 exports.delete_blog_post = (req, res) => {
