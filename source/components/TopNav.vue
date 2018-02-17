@@ -17,12 +17,8 @@
             router-link.navbar-item(to="/gallery") Awards
 </template>
 
-<script>
-export default {};
-</script>
-
 <style scoped>
 .router-link-active {
-  border-bottom: 2px solid hotpink;
+  border-bottom: 2px solid white;
 }
 </style>
