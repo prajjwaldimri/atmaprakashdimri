@@ -1,3 +1,4 @@
+const nl2br = require('nl2br');
 const Blog = require('../models/blog');
 const fileController = require('./fileController');
 
@@ -26,13 +27,28 @@ exports.blog_list_json = (req, res) => {
 };
 
 exports.blog_show = (req, res) => {
-  Blog.findById(req.params.blogId, (err, blog) => {
+  Blog.findById(req.params.blogId).exec((err, blog) => {
     if (err) {
       req.flash('danger', err);
       res.redirect('back');
     }
-    res.render('blog', { pageTitle: blog.title, blog: blog });
+    res.render('layout', { pageTitle: blog.title });
   });
+};
+
+exports.blog_show_json = (req, res) => {
+  Blog.findById(req.params.blogId)
+    .populate('author')
+    .exec((err, blog) => {
+      if (err) {
+        req.flash('danger', err);
+        res.redirect('back');
+      }
+      blog.author = {
+        fullName: blog.author.fullName
+      };
+      res.status(200).json(blog);
+    });
 };
 
 exports.edit_blog_post_get = (req, res) => {
@@ -59,7 +75,7 @@ exports.edit_blog_post_post = async (req, res) => {
         imageRequest.params.blogId,
         {
           title: imageRequest.body.blogTitle,
-          content: imageRequest.body.blogContent,
+          content: nl2br(imageRequest.body.blogContent, false),
           heroImageId: imageRequest.file.id
         },
         (err, blog) => {
@@ -96,7 +112,7 @@ exports.new_blog_post_post = (req, res) => {
   Blog.create(
     {
       title: req.body.blogTitle,
-      content: req.body.blogContent,
+      content: nl2br(req.body.blogContent, false),
       // Currently only admin can be the author
       author: req.user._id
     },

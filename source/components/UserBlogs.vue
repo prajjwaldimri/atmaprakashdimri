@@ -1,6 +1,6 @@
 <template lang="pug">
   .container
-    div(id="blogContainer")    
+    div(id="blogContainer")
       .card(v-for="blog in blogs", v-on:click="blogClick(blog._id)")
         .card-image
           figure.image.is-4by3
@@ -13,12 +13,12 @@
             .media-content
               p.title.is-4 {{blog.title}}
               p.subtitle.is-6 @atmaprakashdimri
-          
+
           .content {{blog.content}}
             br
             br
             time(v-bind:dateTime="blog.updated_at")  {{blog.updated_at}}
-      
+
 </template>
 
 <style lang="scss" scoped>
@@ -60,6 +60,10 @@ export default {
             blog.updated_at = moment(blog.updated_at).format(
               "MMMM Do YYYY, h:mm a"
             );
+            // Truncate blog content
+            let str = blog.content.toString();
+            blog.content =
+              str.length > 140 ? str.substr(0, 140 - 1) + "..." : str;
           });
         },
         err => {
@@ -76,6 +80,3 @@ export default {
   }
 };
 </script>
-
-
-

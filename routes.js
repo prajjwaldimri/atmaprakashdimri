@@ -19,7 +19,7 @@ router.get('/about', (req, res) => {
 });
 
 router.get('/blogs', (req, res) => {
-  res.render('layout', { pageTitle: 'Blog' });
+  res.render('layout', { pageTitle: 'Blogs' });
 });
 
 router.get('/adminLogin', (req, res) => {
@@ -45,6 +45,8 @@ router.get('/showImage/:fileId', fileController.image_download);
 router.get('/allBlogPosts', blogController.blog_list_json);
 
 router.get('/blog/:blogId', blogController.blog_show);
+
+router.get('/blogContent/:blogId', blogController.blog_show_json);
 
 router.get('/getAboutDetails', userController.about_details);
 
