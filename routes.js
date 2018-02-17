@@ -11,15 +11,15 @@ router.get('/', (req, res) => {
 router.post('/adminRegister', userController.register_user_post);
 
 router.get('/gallery', (req, res) => {
-  res.render('gallery', { pageTitle: 'Gallery' });
+  res.render('layout', { pageTitle: 'Gallery' });
 });
 
 router.get('/about', (req, res) => {
-  res.render('about', { pageTitle: 'About' });
+  res.render('layout', { pageTitle: 'About' });
 });
 
 router.get('/blogs', (req, res) => {
-  res.render('blogs', { pageTitle: 'Blog' });
+  res.render('layout', { pageTitle: 'Blog' });
 });
 
 router.get('/adminLogin', (req, res) => {

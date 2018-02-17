@@ -3,6 +3,7 @@ const CleanWebpackPlugin = require('clean-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const extractPlugin = new ExtractTextPlugin('../css/[name].css');
 const webpack = require('webpack');
+const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 
 module.exports = {
   context: path.resolve(__dirname, 'source/js'),
@@ -17,7 +18,7 @@ module.exports = {
   plugins: [
     new CleanWebpackPlugin(['public']),
     extractPlugin,
-    new webpack.optimize.UglifyJsPlugin()
+    new UglifyJsPlugin()
   ],
   module: {
     rules: [

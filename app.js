@@ -4,6 +4,7 @@ const session = require('express-session');
 const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
 const path = require('path');
+const compression = require('compression');
 const passport = require('passport');
 const routes = require('./routes');
 const adminDashboardRoutes = require('./adminDashboardRoutes');
@@ -31,6 +32,8 @@ passport.use(User.createStrategy());
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
 require('./models/blog');
+
+app.use(compression());
 
 // MongoDB connection
 // mongoose.connect(

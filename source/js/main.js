@@ -16,7 +16,8 @@ const router = new VueRouter({
   mode: 'history'
 });
 
-var app = new Vue({
+// eslint-disable-next-line no-new
+new Vue({
   el: '#app',
   render: h => h(App),
   router: router
