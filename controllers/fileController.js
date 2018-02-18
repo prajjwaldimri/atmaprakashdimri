@@ -53,7 +53,7 @@ const imageStorage = new GridFsStorage({
 const fileUpload = multer({
   storage: fileStorage,
   fileFilter: function (req, file, cb) {
-    checkFileType(file, cb, /doc|docx|xls|xlsx|xltx|ttf|otf|ppt|pdf/);
+    checkFileType(file, cb, /doc|docx|xls|xlsx|xltx|ttf|otf|ppt|pdf|zip/);
   }
 }).single('uploadedFile');
 
