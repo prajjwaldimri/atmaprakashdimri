@@ -1,5 +1,5 @@
 const User = require('../models/user');
-const fileController = require('../controllers/fileController');
+const fileController = require('./fileController');
 const nl2br = require('nl2br');
 
 exports.about_details = (req, res) => {

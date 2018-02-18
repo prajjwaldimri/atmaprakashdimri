@@ -6,7 +6,7 @@ const fileModel = require('../models/file');
 const mongoose = require('mongoose');
 mongoose
   .connect(
-    process.env.MONGO_DB_URI || 'mongodb://localhost/passport_local_mongoose'
+    process.env.MONGODB_URI || 'mongodb://localhost/passport_local_mongoose'
   )
   .then(
     () => {
@@ -30,8 +30,7 @@ mongoose
 
 const GridFsStorage = require('multer-gridfs-storage');
 const fileStorage = new GridFsStorage({
-  url:
-    process.env.MONGO_DB_URI || 'mongodb://localhost/passport_local_mongoose',
+  url: process.env.MONGODB_URI || 'mongodb://localhost/passport_local_mongoose',
   file: (req, file) => {
     return {
       filename:
@@ -41,8 +40,7 @@ const fileStorage = new GridFsStorage({
   }
 });
 const imageStorage = new GridFsStorage({
-  url:
-    process.env.MONGO_DB_URI || 'mongodb://localhost/passport_local_mongoose',
+  url: process.env.MONGODB_URI || 'mongodb://localhost/passport_local_mongoose',
   file: (req, file) => {
     return {
       filename:
