@@ -2,6 +2,7 @@ const router = require('express').Router();
 const userController = require('./controllers/userController');
 const fileController = require('./controllers/fileController');
 const blogController = require('./controllers/blogController');
+const awardController = require('./controllers/awardController');
 const passport = require('passport');
 
 router.get('/', (req, res) => {
@@ -37,6 +38,10 @@ router.post(
   }
 );
 
+router.get('/blog/:blogId', blogController.blog_show);
+
+router.get('/awards', awardController.award_list);
+
 // AJAX Routes
 router.get('/allImages', fileController.image_list_json);
 
@@ -44,9 +49,9 @@ router.get('/showImage/:fileId', fileController.image_download);
 
 router.get('/allBlogPosts', blogController.blog_list_json);
 
-router.get('/blog/:blogId', blogController.blog_show);
-
 router.get('/blogContent/:blogId', blogController.blog_show_json);
+
+router.get('/getAwards', awardController.award_list_json);
 
 router.get('/getAboutDetails', userController.about_details);
 

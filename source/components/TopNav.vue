@@ -13,8 +13,9 @@
             router-link.navbar-item(to="/about") About
             router-link.navbar-item(to="/blogs") Blog
             router-link.navbar-item(to="/gallery") Gallery
+            router-link.navbar-item(to="/awards") Awards
             router-link.navbar-item(to="/gallery") Income Tax Software
-            router-link.navbar-item(to="/gallery") Awards
+
 </template>
 
 <style scoped>

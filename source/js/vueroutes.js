@@ -2,6 +2,7 @@ import about from '../components/AboutPage.vue';
 import gallery from '../components/UserGallery.vue';
 import blogs from '../components/UserBlogs.vue';
 import blog from '../components/BlogPage.vue';
+import awards from '../components/AwardsPage.vue';
 
 export default [
   {
@@ -19,5 +20,9 @@ export default [
   {
     path: '/blog/:id',
     component: blog
+  },
+  {
+    path: '/awards',
+    component: awards
   }
 ];

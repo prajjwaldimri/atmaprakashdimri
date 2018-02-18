@@ -9,9 +9,9 @@ block content
       each file in files
         .card(style="margin-top: 4%")
           header.card-header
-            p.card-header-title Uploaded on: #{file.uploadDate}
+            p.card-header-title Uploaded on: #{file.created_at}
           .card-content
-            .content=file.filename
+            .content=file.name
           footer.card-footer
-            a.card-footer-item(href="/adminDashboard/downloadFile/" + file._id) Download
-            a.card-footer-item(href="/adminDashboard/deleteFile/" + file._id, style="background: #eee") Delete
+            a.card-footer-item(href="/adminDashboard/downloadFile/" + file.fileId) Download
+            a.card-footer-item(href="/adminDashboard/deleteFile/" + file.fileId, style="background: #eee") Delete

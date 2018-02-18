@@ -6,8 +6,7 @@ block content
 
     .column.is-8
       include ../includes/notification.pug
-      form(action="/adminDashboard/newBlogPost", method="post", style="padding-top: 4%")
-
+      form(action="", method="post", style="padding-top: 4%", enctype="multipart/form-data")
         .field
           .file.has-name.is-fullwidth
             label.file-label
@@ -18,20 +17,24 @@ block content
                 span.file-label Choose an image...
               span.file-name
 
+        .field
+          label.label Award Name
+          .control
+            input.input(type="text", name="awardName")
 
         .field
-          label.label Blog Post Title
+          label.label Award Short Description
           .control
-            input.input(type="text", name="blogTitle")
+            input.input(type="text", name="award_short_description")
 
         .field
-          label.label Blog Post Content
+          label.label Award Long Description
           .control
-            textarea.textarea(name="blogContent")
+            textarea.textarea(name="award_long_description")
 
         .field
           .control
             button.button.is-link(type="submit")
               span.icon
                 i.fas.fa-upload
-              span Submit
+              span Update

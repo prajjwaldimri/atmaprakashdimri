@@ -1,6 +1,7 @@
 let gridfsFile, File, gridfsImage, Image;
 const path = require('path');
 const multer = require('multer');
+const fileModel = require('../models/file');
 
 const mongoose = require('mongoose');
 mongoose
@@ -10,8 +11,8 @@ mongoose
   .then(
     () => {
       gridfsFile = require('mongoose-gridfs')({
-        collection: 'files',
-        model: 'File',
+        collection: 'filesGridFs',
+        model: 'FileGridFS',
         mongooseConnection: mongoose.connection
       });
       File = gridfsFile.model;
@@ -35,7 +36,7 @@ const fileStorage = new GridFsStorage({
     return {
       filename:
         file.originalname + '-' + Date.now() + path.extname(file.originalname),
-      bucketName: 'files'
+      bucketName: 'filesGridFs'
     };
   }
 });
@@ -82,7 +83,7 @@ function checkFileType (file, cb, allowedFileTypes) {
 }
 
 exports.file_list = (req, res) => {
-  File.find({}, (err, files) => {
+  fileModel.find({}, (err, files) => {
     if (err) {
       req.flash('danger', err);
       res.redirect('back');
@@ -132,12 +133,19 @@ exports.image_download = (req, res) => {
 };
 
 exports.file_delete = (req, res) => {
-  File.unlinkById(req.params.fileId, (err, unlinkedAttachment) => {
+  fileModel.remove({ fileId: req.params.fileId }, err => {
     if (err) {
       req.flash('danger', err);
+      return res.redirect('back');
     }
-    req.flash('success', 'File successfully deleted');
-    res.redirect('back');
+    File.unlinkById(req.params.fileId, (err, unlinkedAttachment) => {
+      if (err) {
+        req.flash('danger', err);
+      } else {
+        req.flash('success', 'File successfully deleted');
+      }
+      res.redirect('back');
+    });
   });
 };
 
@@ -160,9 +168,23 @@ exports.file_upload_post = (req, res) => {
     if (err) {
       req.flash('danger', 'Error Uploading File');
       console.log(err);
-    } else {
-      req.flash('success', 'Successfully uploaded file');
+      return;
     }
+    fileModel.create(
+      {
+        name: req.file.originalname,
+        type: req.body.fileType,
+        fileId: req.file.id
+      },
+      (err, file) => {
+        if (err) {
+          req.flash('danger', 'Error Uploading File');
+          console.log(err);
+        } else {
+          req.flash('success', 'Successfully uploaded file');
+        }
+      }
+    );
     res.redirect('/adminDashboard/allUploadedFiles');
   });
 };

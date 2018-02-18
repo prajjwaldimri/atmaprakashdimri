@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 
 const Award = new mongoose.Schema({
-  title: String,
+  name: String,
   short_description: String,
   long_description: String,
   heroImageId: String

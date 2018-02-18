@@ -7,7 +7,7 @@ block content
     .column.is-8
       include ../includes/notification.pug
       form(action="/adminDashboard/newFileUpload", method="post", style="padding-top: 4%", enctype="multipart/form-data")
-        
+
         .field
           .file.has-name.is-fullwidth
             label.file-label
@@ -17,6 +17,16 @@ block content
                   i.fas.fa-upload
                 span.file-label Choose a file...
               span.file-name
+
+        .field
+          label.label File Type
+          .control
+            .select
+              select(name="fileType")
+                option(selected, value="font") Font
+                option(value="income-tax-software") Income Tax Software
+                option(value="income-tax-font") Income Tax Font
+                option(value="other") Other
 
         .field
           button.button.is-info(type="submit") Upload File

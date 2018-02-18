@@ -1,6 +1,7 @@
 import Vue from 'vue';
 import VueResource from 'vue-resource';
 import VueRouter from 'vue-router';
+import { Tabs, Tab } from 'vue-tabs-component';
 import Routes from './vueroutes';
 import App from '../components/App.vue';
 
@@ -10,6 +11,9 @@ import WOW from 'wowjs';
 
 Vue.use(VueRouter);
 Vue.use(VueResource);
+
+Vue.component('tabs', Tabs);
+Vue.component('tab', Tab);
 
 const router = new VueRouter({
   routes: Routes,

@@ -2,6 +2,7 @@ const router = require('express').Router();
 const blogController = require('./controllers/blogController');
 const userController = require('./controllers/userController');
 const fileController = require('./controllers/fileController');
+const awardController = require('./controllers/awardController');
 
 // Request Authenticator
 router.use('/', (req, res, next) => {
@@ -18,6 +19,8 @@ router.get('/allUploadedFiles', fileController.file_list);
 
 router.get('/allUploadedImages', fileController.image_list);
 
+router.get('/allAwards', awardController.award_list);
+
 router.get('/downloadFile/:fileId', fileController.file_download);
 
 router.get('/deleteFile/:fileId', fileController.file_delete);
@@ -30,7 +33,13 @@ router.get('/editBlogPost/:blogId', blogController.edit_blog_post_get);
 
 router.post('/editBlogPost/:blogId', blogController.edit_blog_post_post);
 
+router.get('/editAward/:awardId', awardController.edit_award_get);
+
+router.post('/editAward/:awardId', awardController.edit_award_post);
+
 router.get('/deleteBlogPost/:blogId', blogController.delete_blog_post);
+
+router.get('/deleteAward/:awardId', awardController.delete_award);
 
 router.get('/editProfile', userController.edit_profile_get);
 
@@ -55,5 +64,9 @@ router.post('/newFileUpload', fileController.file_upload_post);
 router.get('/newImageUpload', fileController.image_upload_get);
 
 router.post('/newImageUpload', fileController.image_upload_post);
+
+router.get('/newAward', awardController.new_award_get);
+
+router.post('/newAward', awardController.new_award_post);
 
 module.exports = router;

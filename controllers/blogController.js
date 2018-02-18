@@ -106,15 +106,18 @@ exports.new_blog_post_get = (req, res) => {
   res.render('dashboard/newBlogPost', { pageTitle: 'Admin Dashboard' });
 };
 
-exports.new_blog_post_post = (req, res) => {
+exports.new_blog_post_post = async (req, res) => {
   if (!req.body) return res.sendStatus(400);
+
+  var imageRequest = await fileController.upload_image(req, res);
 
   Blog.create(
     {
-      title: req.body.blogTitle,
-      content: nl2br(req.body.blogContent, false),
+      title: imageRequest.body.blogTitle,
+      content: nl2br(imageRequest.body.blogContent, false),
       // Currently only admin can be the author
-      author: req.user._id
+      author: req.user._id,
+      heroImageId: imageRequest.file.id
     },
     (err, blogPost) => {
       if (err) {
