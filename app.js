@@ -9,6 +9,7 @@ const passport = require('passport');
 const routes = require('./routes');
 const adminDashboardRoutes = require('./adminDashboardRoutes');
 
+app.use(compression());
 app.set('view engine', 'pug');
 app.set('views', path.join(__dirname, 'source/views'));
 app.use(express.static('public'));
@@ -32,8 +33,6 @@ passport.use(User.createStrategy());
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
 require('./models/blog');
-
-app.use(compression());
 
 // MongoDB connection
 require('mongoose').connect(
