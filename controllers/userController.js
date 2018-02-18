@@ -34,7 +34,8 @@ exports.edit_profile_post = (req, res) => {
       shortName: req.body.shortName,
       email: req.body.email,
       phoneNumber: req.body.phoneNumber,
-      bio: nl2br(req.body.bio, false)
+      bio: nl2br(req.body.bio, false),
+      whatIDo: nl2br(req.body.whatIDo, false)
     },
     (err, blog) => {
       if (err) {

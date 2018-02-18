@@ -13,7 +13,7 @@
       .hero-body
         .container.has-text-centered
           h1.title.wow.fadeInLeft What I Do
-          h2.has.text.white.is-size-6.wow.fadeInRight I am passionate about providing students in remote areas a better education.
+          h2.has.text.white.is-size-6.wow.fadeInRight {{user.whatIDo}}
 
     section.hero.is-dark
       .hero-body
