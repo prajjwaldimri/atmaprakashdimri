@@ -46,6 +46,9 @@
     "vue-router": "^3.0.1",
     "vue-tabs-component": "^1.4.0"
   },
+  "engines": {
+    "node": "9.5.0"
+  },
   "devDependencies": {
     "@babel/core": "^7.0.0-beta.39",
     "@babel/preset-env": "^7.0.0-beta.39",

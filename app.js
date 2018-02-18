@@ -43,6 +43,6 @@ require('mongoose').connect(
 app.use('/', routes);
 app.use('/adminDashboard', adminDashboardRoutes);
 
-app.listen('8080', () => {
+app.listen(process.env.PORT || '8080', () => {
   console.log('App listening on 8080');
 });
