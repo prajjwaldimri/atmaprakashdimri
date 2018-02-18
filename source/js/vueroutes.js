@@ -3,6 +3,7 @@ import gallery from '../components/UserGallery.vue';
 import blogs from '../components/UserBlogs.vue';
 import blog from '../components/BlogPage.vue';
 import awards from '../components/AwardsPage.vue';
+import downloads from '../components/Downloads.vue';
 
 export default [
   {
@@ -24,5 +25,9 @@ export default [
   {
     path: '/awards',
     component: awards
+  },
+  {
+    path: '/downloads',
+    component: downloads
   }
 ];
