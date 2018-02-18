@@ -9,7 +9,7 @@ router.get('/', (req, res) => {
   res.redirect('/about');
 });
 
-router.post('/adminRegister', userController.register_user_post);
+// router.post('/adminRegister', userController.register_user_post);
 
 router.get('/gallery', (req, res) => {
   res.render('layout', { pageTitle: 'Gallery' });
