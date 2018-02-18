@@ -2,6 +2,10 @@ const Award = require('../models/award');
 const fileController = require('./fileController');
 const nl2br = require('nl2br');
 
+exports.award_get = (req, res) => {
+  res.render('layout', { pageTitle: 'Awards' });
+};
+
 exports.award_list = (req, res) => {
   Award.find({}, (err, awards) => {
     if (err) {

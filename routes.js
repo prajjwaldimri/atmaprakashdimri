@@ -40,7 +40,7 @@ router.post(
 
 router.get('/blog/:blogId', blogController.blog_show);
 
-router.get('/awards', awardController.award_list);
+router.get('/awards', awardController.award_get);
 
 // AJAX Routes
 router.get('/allImages', fileController.image_list_json);
