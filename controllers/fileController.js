@@ -166,7 +166,7 @@ exports.file_upload_post = (req, res) => {
     if (err) {
       req.flash('danger', 'Error Uploading File');
       console.log(err);
-      return;
+      res.redirect('back');
     }
     fileModel.create(
       {
