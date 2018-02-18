@@ -1,8 +1,7 @@
 <template lang="pug">
-  div
-    .tabs.is-full-width
-      tabs(v-for="award in awards" :options="{ useUrlFragment: false }" :key="award.id")
-        tab(v-bind:name="award.name" v-html="award.long_description")
+  .container(style="padding-top: 4%; padding-bottom: 4%;")
+    tabs
+      tab(v-for="(award, index) in awards" :name="award.name" v-html="award.long_description" :key="award.id" :selected="index==0")
 </template>
 
 <script>
