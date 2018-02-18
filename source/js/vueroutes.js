@@ -6,7 +6,7 @@ import awards from '../components/AwardsPage.vue';
 
 export default [
   {
-    path: '/about',
+    path: '/',
     component: about
   },
   {

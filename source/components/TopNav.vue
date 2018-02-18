@@ -10,7 +10,7 @@
             span
         .navbar-menu
           .navbar-end
-            router-link.navbar-item(to="/about") About
+            router-link.navbar-item(to="/") About
             router-link.navbar-item(to="/blogs") Blog
             router-link.navbar-item(to="/gallery") Gallery
             router-link.navbar-item(to="/awards") Awards

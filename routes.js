@@ -6,7 +6,7 @@ const awardController = require('./controllers/awardController');
 const passport = require('passport');
 
 router.get('/', (req, res) => {
-  res.redirect('/about');
+  res.render('layout', { pageTitle: 'About' });
 });
 
 // router.post('/adminRegister', userController.register_user_post);
@@ -16,7 +16,7 @@ router.get('/gallery', (req, res) => {
 });
 
 router.get('/about', (req, res) => {
-  res.render('layout', { pageTitle: 'About' });
+  res.redirect('/');
 });
 
 router.get('/blogs', (req, res) => {
