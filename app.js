@@ -36,9 +36,9 @@ require('./models/blog');
 app.use(compression());
 
 // MongoDB connection
-// mongoose.connect(
-//   process.env.MONGO_DB_URI || 'mongodb://localhost/passport_local_mongoose'
-// );
+require('mongoose').connect(
+  process.env.MONGO_DB_URI || 'mongodb://localhost/passport_local_mongoose'
+);
 
 app.use('/', routes);
 app.use('/adminDashboard', adminDashboardRoutes);
