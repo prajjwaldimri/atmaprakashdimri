@@ -117,8 +117,15 @@ exports.image_list_json = (req, res) => {
 };
 
 exports.file_download = (req, res) => {
-  let fileStream = File.readById(req.params.fileId);
-  fileStream.pipe(res);
+  fileModel.find({ fileId: req.params.fileId }, (err, file) => {
+    if (err) {
+      return res.redirect('back');
+    }
+    console.log(file);
+    let fileStream = File.readById(req.params.fileId);
+    res.attachment(file.name);
+    fileStream.pipe(res);
+  });
 };
 
 exports.image_download = (req, res) => {
