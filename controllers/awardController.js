@@ -43,7 +43,7 @@ exports.new_award_post = async (req, res) => {
   Award.create(
     {
       name: imageRequest.body.awardName,
-      short_description: imageRequest.body.award_short_description,
+      time: imageRequest.body.time,
       long_description: nl2br(imageRequest.body.award_long_description),
       heroImageId: imageRequest.file.id
     },
@@ -83,7 +83,7 @@ exports.edit_award_post = async (req, res) => {
         imageRequest.params.awardId,
         {
           name: imageRequest.body.awardName,
-          short_description: imageRequest.body.award_short_description,
+          time: imageRequest.body.time,
           long_description: nl2br(imageRequest.body.award_long_description),
           heroImageId: imageRequest.file.id
         },

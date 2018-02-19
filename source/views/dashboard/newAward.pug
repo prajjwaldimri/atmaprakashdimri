@@ -23,9 +23,9 @@ block content
             input.input(type="text", name="awardName")
 
         .field
-          label.label Award Short Description
+          label.label Award Receive Date
           .control
-            input.input(type="text", name="award_short_description")
+            input.input(type="date", name="time", required pattern="[0-9]{4}-[0-9]{2}-[0-9]{2}")
 
         .field
           label.label Award Long Description
