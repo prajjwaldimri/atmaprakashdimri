@@ -34,6 +34,7 @@ exports.edit_profile_post = (req, res) => {
       shortName: req.body.shortName,
       email: req.body.email,
       phoneNumber: req.body.phoneNumber,
+      facebookUsername: req.body.facebookUsername,
       bio: nl2br(req.body.bio, false),
       whatIDo: nl2br(req.body.whatIDo, false)
     },

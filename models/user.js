@@ -7,6 +7,7 @@ const User = new mongoose.Schema({
   email: String,
   admin: Boolean,
   phoneNumber: String,
+  facebookUsername: String,
   bio: String,
   whatIDo: String,
   profileImageId: String

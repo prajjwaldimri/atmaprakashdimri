@@ -28,6 +28,11 @@ block content
             input.input(type="tel", name="phoneNumber", value=user.phoneNumber)
 
         .field
+          label.label Facebook Username
+          .control
+            input.input(type="text", name="facebookUsername", value=user.facebookUsername)
+
+        .field
           label.label Bio
           .control
             textarea.textarea(name="bio")=user.bio
