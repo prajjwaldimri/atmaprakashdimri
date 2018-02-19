@@ -127,10 +127,12 @@ exports.image_list_json = (req, res) => {
 };
 
 exports.file_download = (req, res) => {
-  fileModel.find({ fileId: req.params.fileId }, (err, file) => {
+  fileModel.findOne({ fileId: req.params.fileId }, (err, file) => {
     if (err) {
       return res.redirect('back');
     }
+    // res.setHeader('content-type', `${file.mimetype}`);
+    // res.setHeader('Content-Disposition', `attachment; filename=${file.name}`);
     let fileStream = File.readById(req.params.fileId);
     res.attachment(file.name);
     fileStream.pipe(res);
@@ -184,11 +186,13 @@ exports.file_upload_post = (req, res) => {
       console.log(err);
       res.redirect('back');
     }
+    console.log(req.file);
     fileModel.create(
       {
         name: req.file.originalname,
         type: req.body.fileType,
-        fileId: req.file.id
+        fileId: req.file.id,
+        mimetype: req.file.mimetype
       },
       (err, file) => {
         if (err) {

@@ -4,7 +4,8 @@ const File = new mongoose.Schema(
   {
     name: String,
     type: String,
-    fileId: String
+    fileId: String,
+    mimetype: String
   },
   {
     timestamps: {
