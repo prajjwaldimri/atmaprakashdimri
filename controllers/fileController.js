@@ -93,6 +93,16 @@ exports.file_list = (req, res) => {
   });
 };
 
+exports.file_list_json = (req, res) => {
+  fileModel.find({}, (err, files) => {
+    if (err) {
+      req.flash('danger', 'No Files Found!');
+      res.redirect('back');
+    }
+    res.json(files);
+  });
+};
+
 exports.image_list = (req, res) => {
   Image.find({}, (err, images) => {
     if (err) {
@@ -121,7 +131,6 @@ exports.file_download = (req, res) => {
     if (err) {
       return res.redirect('back');
     }
-    console.log(file);
     let fileStream = File.readById(req.params.fileId);
     res.attachment(file.name);
     fileStream.pipe(res);

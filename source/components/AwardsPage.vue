@@ -1,7 +1,8 @@
 <template lang="pug">
   .container(style="padding-top: 4%; padding-bottom: 4%;")
     tabs
-      tab(v-for="(award, index) in awards" :name="award.name" v-html="award.long_description" :key="award.id" :selected="index==0")
+      tab(v-for="(award, index) in awards" :name="award.name" :key="award.id" :selected="index==0")
+        .content(v-html="award.long_description")
 </template>
 
 <script>

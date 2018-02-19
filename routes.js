@@ -42,7 +42,16 @@ router.get('/blog/:blogId', blogController.blog_show);
 
 router.get('/awards', awardController.award_get);
 
+router.get('/downloads', (req, res) => {
+  res.render('layout', { pageTitle: 'Downloads' });
+});
+
 // AJAX Routes
+
+router.get('/allFiles', fileController.file_list_json);
+
+router.get('/downloadFile/:fileId', fileController.file_download);
+
 router.get('/allImages', fileController.image_list_json);
 
 router.get('/showImage/:fileId', fileController.image_download);
