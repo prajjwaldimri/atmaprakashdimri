@@ -93,6 +93,8 @@
 </template>
 
 <script>
+import moment from "moment";
+
 export default {
   data() {
     return {
@@ -104,6 +106,11 @@ export default {
       this.$http.get("/allFiles").then(
         response => {
           this.files = response.body;
+          this.files.forEach(file => {
+            file.created_at = moment(file.created_at).format(
+              "MMMM Do YYYY, h:mm a"
+            );
+          });
         },
         err => {
           console.log(err);
