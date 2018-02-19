@@ -7,7 +7,8 @@ import App from '../components/App.vue';
 import '../scss/main.scss';
 import './partials/notification';
 import WOW from 'wowjs';
-import 'bulma-extensions/bulma-accordion/dist/bulma-accordion';
+
+import 'bulma-extensions/bulma-accordion/dist/bulma-accordion.min';
 
 // Tabs component
 

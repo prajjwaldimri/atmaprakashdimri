@@ -4,7 +4,7 @@ const Award = new mongoose.Schema({
   name: String,
   time: String,
   long_description: String,
-  heroImageId: String
+  imageIds: [String]
 });
 
 module.exports = mongoose.model('Award', Award);

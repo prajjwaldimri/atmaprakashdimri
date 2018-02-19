@@ -38,14 +38,14 @@ exports.new_award_get = (req, res) => {
 };
 
 exports.new_award_post = async (req, res) => {
-  var imageRequest = await fileController.upload_image(req, res);
+  var imageRequest = await fileController.upload_image_multiple(req, res);
 
   Award.create(
     {
       name: imageRequest.body.awardName,
       time: imageRequest.body.time,
       long_description: nl2br(imageRequest.body.award_long_description),
-      heroImageId: imageRequest.file.id
+      imageIds: imageRequest.files.map(file => file.id)
     },
     (err, award) => {
       if (err) {
@@ -71,21 +71,24 @@ exports.edit_award_get = (req, res) => {
 };
 
 exports.edit_award_post = async (req, res) => {
-  var imageRequest = await fileController.upload_image(req, res);
+  var imageRequest = await fileController.upload_image_multiple(req, res);
 
   Award.findById(imageRequest.params.awardId, (err, award) => {
     if (err) return res.statusCode(404);
     else {
-      if (imageRequest.file === undefined) {
-        imageRequest.file = { id: award.heroImageId || '' };
+      if (imageRequest.files === undefined) {
+        imageRequest.files = award.imageIds || [];
       }
+      award.imageIds.forEach(async imageId => {
+        await fileController.delete_image({ params: { fileId: imageId } }, res);
+      });
       Award.findByIdAndUpdate(
         imageRequest.params.awardId,
         {
           name: imageRequest.body.awardName,
           time: imageRequest.body.time,
           long_description: nl2br(imageRequest.body.award_long_description),
-          heroImageId: imageRequest.file.id
+          imageIds: imageRequest.files.map(file => file.id)
         },
         (err, award) => {
           if (err) {

@@ -65,6 +65,14 @@ const imageUpload = multer({
   }
 }).single('uploadedImage');
 
+const imageUploadMultiple = multer({
+  storage: imageStorage,
+  limits: { fileSize: 50000000 },
+  fileFilter: function (req, file, cb) {
+    checkFileType(file, cb, /jpeg|jpg|png|gif/);
+  }
+}).array('uploadedImages', 10);
+
 function checkFileType (file, cb, allowedFileTypes) {
   // Check extension
   const extName = allowedFileTypes.test(
@@ -231,6 +239,29 @@ exports.upload_image = (req, res) => {
         reject(err);
       }
       resolve(req);
+    });
+  });
+};
+
+exports.upload_image_multiple = (req, res) => {
+  return new Promise((resolve, reject) => {
+    imageUploadMultiple(req, res, err => {
+      if (err) {
+        req.flash('danger', 'Error Uploading File');
+        reject(err);
+      }
+      resolve(req);
+    });
+  });
+};
+
+exports.delete_image = (req, res) => {
+  return new Promise((resolve, reject) => {
+    Image.unlinkById(req.params.fileId, (err, unlinkedAttachment) => {
+      if (err) {
+        reject(err);
+      }
+      resolve(unlinkedAttachment);
     });
   });
 };
