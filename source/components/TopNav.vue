@@ -3,7 +3,7 @@
     nav(class="navbar is-fixed-top is-black", role="navigation", aria-label="main navigation")
       .container
         .navbar-brand
-          a.navbar-item(href="/") A.P. Dimri
+          a.navbar-item.is-size-3(href="/", style="font-family: 'Sacramento', cursive;") A.P. Dimri
           button.button.navbar-burger
             span
             span
@@ -18,7 +18,7 @@
 
 </template>
 
-<style scoped>
+<style lang="scss" scoped>
 .router-link-active {
   border-bottom: 2px solid white;
 }

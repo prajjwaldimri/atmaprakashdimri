@@ -62,6 +62,35 @@
 
       .accordion.is-active
         .accordion-header
+          p Exam Software
+          button.toggle(aria-label="toggle")
+        .accordion-body
+          table.table.is-hoverable.is-fullwidth
+            thead
+              tr
+                th
+                  abbr(title="Name")
+                  | File Name
+                th
+                  abbr(title="Uploaded")
+                  | Upload Date
+                th
+                  abbr(title="Dl. Link")
+                  | Download Link
+
+            tbody
+              tr(v-for="file in files" v-if="file.type == 'exam-software'")
+                td  {{file.name}}
+                td  {{file.created_at}}
+                td
+                  p.field
+                    a.button.is-primary(v-on:click="fileDownloadClick(file.fileId)")
+                      span.icon
+                        i.fas.fa-download
+                      span Download
+
+      .accordion.is-active
+        .accordion-header
           p Other
           button.toggle(aria-label="toggle")
         .accordion-body
