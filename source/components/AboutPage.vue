@@ -35,7 +35,9 @@
 
     .modal
       .modal-background
-      .modal-content {{user.phoneNumber}}
+      .modal-content
+        .box.has-text-centered
+          p.subtitle You can contact me on my phone number: +91-{{user.phoneNumber}}
       button.modal-close.is-large(aria-label="close modal" v-on:click="hideTelephoneModal")
 
 </template>
