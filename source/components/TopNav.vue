@@ -4,7 +4,7 @@
       .container
         .navbar-brand
           a.navbar-item.is-size-3(href="/", style="font-family: 'Sacramento', cursive;") A.P. Dimri
-          button.button.navbar-burger
+          button.button.navbar-burger.is-black(v-on:click="navbarMenuClick")
             span
             span
             span
@@ -23,3 +23,15 @@
   border-bottom: 2px solid white;
 }
 </style>
+
+<script>
+export default {
+  methods: {
+    navbarMenuClick: function() {
+      document.querySelector(".navbar-menu").classList.toggle("is-active");
+      document.querySelector(".navbar-burger").classList.toggle("is-active");
+    }
+  }
+};
+</script>
+

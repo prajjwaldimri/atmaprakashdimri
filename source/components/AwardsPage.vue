@@ -1,5 +1,5 @@
 <template lang="pug">
-  .container(style="padding-top: 4%; padding-bottom: 4%;")
+  .container(style="padding: 4%")
     tabs
       tab(v-for="(award, index) in awards" :name="award.name" :key="award.id" :selected="index==0")
         .columns

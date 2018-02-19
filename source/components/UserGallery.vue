@@ -1,5 +1,5 @@
 <template lang="pug">
-  .container
+  .container(style="padding: 4%")
     div(id="galleryContainer")
       .item(v-bind:class="'h' + randomNumber(4) + ' ' +  'v' + randomNumber(4)", v-for="image in images")
         img(v-bind:src="'/showImage/' + image._id")
@@ -9,7 +9,7 @@
         img(v-bind:src="'/showImage/' + image._id")
         .item__overlay
           button(v-on:click="imageClick(image._id)").button View ->
-      
+
 </template>
 
 <style lang="scss" scoped>

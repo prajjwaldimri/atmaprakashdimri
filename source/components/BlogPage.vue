@@ -2,7 +2,7 @@
   div
     section.hero.is-large.is-dark.blog-header(v-bind:style="{'background-image': heroImageUrl}")
       .hero-body.has-text-centered.blog-header-body
-        .container
+        .container(style="padding: 4%")
           .title.is-size-1 {{blog.title}}
           .subtitle(style="padding-top:2%") by {{blog.author.fullName}}
     .content.blog-content

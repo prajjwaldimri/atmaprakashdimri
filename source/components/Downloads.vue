@@ -1,5 +1,5 @@
 <template lang="pug">
-  .container(style="padding-top: 4%; padding-bottom: 4%")
+  .container(style="padding: 4%")
     section.accordions
       .accordion.is-active
         .accordion-header

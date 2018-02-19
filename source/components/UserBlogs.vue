@@ -1,5 +1,5 @@
 <template lang="pug">
-  .container
+  .container(style="padding: 4%")
     div(id="blogContainer")
       .card(v-for="blog in blogs", v-on:click="blogClick(blog._id)")
         .card-image
