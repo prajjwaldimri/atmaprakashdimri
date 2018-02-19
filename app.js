@@ -18,7 +18,7 @@ app.use(
     secret: 'cat on a mat',
     resave: false,
     saveUninitialized: false,
-    cookie: { maxAge: 60000 }
+    cookie: { maxAge: 600000 }
   })
 );
 app.use(bodyParser.urlencoded({ extended: false }));

@@ -2,10 +2,18 @@
   .container(style="padding-top: 4%; padding-bottom: 4%;")
     tabs
       tab(v-for="(award, index) in awards" :name="award.name" :key="award.id" :selected="index==0")
-        .content(v-html="award.long_description")
+        .columns
+          .column.is-8
+            h1.subtitle.has-text-info Award Received: {{award.time}}
+            .content(v-html="award.long_description")
+          .column.is-4
+            figure.image
+              img(v-bind:src="'/showImage/' + award.heroImageId")
 </template>
 
 <script>
+import moment from "moment";
+
 export default {
   data() {
     return {
@@ -17,6 +25,9 @@ export default {
       this.$http.get("/getAwards").then(
         response => {
           this.awards = response.body;
+          this.awards.forEach(award => {
+            award.time = moment(award.time).format("MMMM Do YYYY");
+          });
         },
         err => {
           console.log(err);

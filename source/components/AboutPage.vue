@@ -7,7 +7,7 @@
           .columns.column.is-12.is-centered(style="margin-left: 0; margin-right: 0; padding: 0; padding-top: 2%")
             figure.image.is-128x128.wow.fadeInUp(style="width:256px; height:256px;")
               img(v-bind:src="'/showImage/' + user.profileImageId", alt="Author's Image", style="border: 4px solid #65def1;")
-          h2.subtitle.wow.fadeIn(style="padding-top: 2%;", v-html="user.bio")
+          h2.subtitle.wow.fadeIn(v-html="user.bio")
 
     section.hero.is-white.is-bold
       .hero-body
