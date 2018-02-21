@@ -42,18 +42,27 @@ export default {
     this.getAwards();
   },
   updated: function() {
-    var mySiema = new Siema({
-      selector: ".siema",
-      duration: 1000,
-      easing: "ease-out",
-      perPage: 1,
-      startIndex: 0,
-      draggable: true,
-      multipleDrag: true,
-      threshold: 20,
-      loop: true
+    var siemas = document.querySelectorAll(".siema");
+    var mySiemas = [];
+
+    for (const siema of siemas) {
+      var tempSiema = new Siema({
+        selector: siema,
+        duration: 1000,
+        easing: "ease-out",
+        perPage: 1,
+        startIndex: 0,
+        draggable: true,
+        multipleDrag: true,
+        threshold: 20,
+        loop: true
+      });
+      mySiemas.push(tempSiema);
+    }
+
+    mySiemas.forEach(siema => {
+      setInterval(() => siema.next(), 5000);
     });
-    setInterval(() => mySiema.next(), 5000);
   }
 };
 </script>
