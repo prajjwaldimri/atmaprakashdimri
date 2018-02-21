@@ -7,11 +7,11 @@
             h1.subtitle.has-text-info Award Received: {{award.time}}
             .content(v-html="award.long_description")
           .column.is-6
-            .carousel.carousel-animated.carousel-animate-slide
+            .carousel.carousel-animated.carousel-animate-slide(data-autoplay="true")
               .carousel-container
-                .carousel-item.has-background.is-active(v-for="imageId in award.imageIds")
+                .carousel-item.has-background(v-for="(imageId, index) in award.imageIds" v-bind:class="{'is-active' : index == 0}")
                   img.is-background(v-bind:src="'/showImage/' + imageId")
-              .carousel-navigation
+              .carousel-navigation.is-overlay
                 .carousel-nav-left
                   i.fa.fa-chevron-left(aria-hidden="true")
                 .carousel-nav-right
@@ -20,7 +20,7 @@
 
 <script>
 import moment from "moment";
-import 'bulma-extensions/bulma-carousel/dist/bulma-carousel.min';
+import "bulma-extensions/bulma-carousel/dist/bulma-carousel.min";
 
 export default {
   data() {
@@ -32,6 +32,7 @@ export default {
     getAwards: function() {
       this.$http.get("/getAwards").then(
         response => {
+          // location.reload();
           this.awards = response.body;
           this.awards.forEach(award => {
             award.time = moment(award.time).format("MMMM Do YYYY");
@@ -43,7 +44,7 @@ export default {
       );
     }
   },
-  beforeMount() {
+  mounted() {
     this.getAwards();
   }
 };
