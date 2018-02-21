@@ -7,7 +7,7 @@
             h1.subtitle.has-text-info Award Received: {{award.time}}
             .content(v-html="award.long_description")
           .column.is-6
-            .carousel.carousel-animated.carousel-animate-slide(data-autoplay="true")
+            .carousel.carousel-animated.carousel-animate-slide
               .carousel-container
                 .carousel-item.has-background(v-for="(imageId, index) in award.imageIds" v-bind:class="{'is-active' : index == 0}")
                   img.is-background(v-bind:src="'/showImage/' + imageId")
@@ -20,7 +20,6 @@
 
 <script>
 import moment from "moment";
-import "bulma-extensions/bulma-carousel/dist/bulma-carousel.min";
 
 export default {
   data() {
