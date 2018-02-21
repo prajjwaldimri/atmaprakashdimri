@@ -66,7 +66,6 @@ export default {
 
     //HACK:  Need to set width explicitly as vue tabs are reducing the width of sliders to 0
     var mainWidth = getComputedStyle(siemas[0].firstChild)["width"];
-    console.log(mainWidth);
     siemas.forEach(siema => {
       siema.firstChild.style.width = mainWidth;
     });
