@@ -20,6 +20,7 @@
 
 <script>
 import moment from "moment";
+import 'bulma-extensions/bulma-carousel/dist/bulma-carousel.min';
 
 export default {
   data() {

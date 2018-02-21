@@ -18,7 +18,12 @@ module.exports = {
   plugins: [
     new CleanWebpackPlugin(['public']),
     extractPlugin,
-    new UglifyJsPlugin()
+    new UglifyJsPlugin(),
+    new webpack.DefinePlugin({
+      'process.env': {
+        NODE_ENV: '"production"'
+      }
+    })
   ],
   module: {
     rules: [
