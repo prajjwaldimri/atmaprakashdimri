@@ -7,19 +7,15 @@
             h1.subtitle.has-text-info Award Received: {{award.time}}
             .content(v-html="award.long_description")
           .column.is-6
-            .carousel.carousel-animated.carousel-animate-slide
-              .carousel-container
-                .carousel-item.has-background(v-for="(imageId, index) in award.imageIds" v-bind:class="{'is-active' : index == 0}")
-                  img.is-background(v-bind:src="'/showImage/' + imageId")
-              .carousel-navigation.is-overlay
-                .carousel-nav-left
-                  i.fa.fa-chevron-left(aria-hidden="true")
-                .carousel-nav-right
-                  i.fa.fa-chevron-right(aria-hidden="true")
+            .siema
+              figure.image(v-for="(imageId, index) in award.imageIds")
+                img(v-bind:src="'/showImage/' + imageId")
+
 </template>
 
 <script>
 import moment from "moment";
+import Siema from "siema";
 
 export default {
   data() {
@@ -31,7 +27,6 @@ export default {
     getAwards: function() {
       this.$http.get("/getAwards").then(
         response => {
-          // location.reload();
           this.awards = response.body;
           this.awards.forEach(award => {
             award.time = moment(award.time).format("MMMM Do YYYY");
@@ -43,8 +38,22 @@ export default {
       );
     }
   },
-  mounted() {
+  beforeMount() {
     this.getAwards();
+  },
+  updated: function() {
+    var mySiema = new Siema({
+      selector: ".siema",
+      duration: 1000,
+      easing: "ease-out",
+      perPage: 1,
+      startIndex: 0,
+      draggable: true,
+      multipleDrag: true,
+      threshold: 20,
+      loop: true
+    });
+    setInterval(() => mySiema.next(), 5000);
   }
 };
 </script>
