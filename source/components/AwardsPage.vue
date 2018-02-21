@@ -8,7 +8,7 @@
             .content(v-html="award.long_description")
           .column.is-6
             .siema
-              figure.image(v-for="(imageId, index) in award.imageIds")
+              figure.image(v-for="imageId in award.imageIds")
                 img(v-bind:src="'/showImage/' + imageId")
 
 </template>
@@ -62,6 +62,13 @@ export default {
 
     mySiemas.forEach(siema => {
       setInterval(() => siema.next(), 5000);
+    });
+
+    //HACK:  Need to set width explicitly as vue tabs are reducing the width of sliders to 0
+    var mainWidth = getComputedStyle(siemas[0].firstChild)["width"];
+    console.log(mainWidth);
+    siemas.forEach(siema => {
+      siema.firstChild.style.width = mainWidth;
     });
   }
 };
