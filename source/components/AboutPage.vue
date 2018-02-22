@@ -1,9 +1,10 @@
 <template lang="pug">
   div
-    section.hero.is-medium.is-info.is-bold
+    canvas.background
+    section.hero.is-medium.is-link.is-bold
       .hero-body
         .container.has-text-centered
-          h1.has-text-white.is-size-1.wow.fadeInDown(style="font-family: 'Patua One', cursive;") Hi, I am {{user.fullName}}
+          h1.has-text-white.wow.fadeInDown(style="font-family: 'Teko', cursive; font-size: 5rem; text-shadow: 4px 4px black;") Hi, I am {{user.fullName}}
           .columns(style="padding-top: 2%")
             .column.is-4.is-offset-4
               figure.image.wow.fadeInUp
@@ -45,10 +46,19 @@
 
 <style lang="scss" scoped>
 @import "../scss/main.scss";
+
+.background {
+  position: absolute;
+  display: block;
+  top: 0;
+  left: 0;
+  z-index: 0;
+}
 </style>
 
 
 <script>
+import Particles from "particlesjs";
 export default {
   data() {
     return {
@@ -76,8 +86,15 @@ export default {
       modal.classList.remove("is-active");
     }
   },
-  beforeMount() {
+  mounted() {
     this.getAboutDetails();
+    Particles.init({
+      selector: ".background",
+      color: ["#fffcf9", "#292f36"],
+      connectParticles: true,
+      maxParticles: 100,
+      minDistance: 50
+    });
   }
 };
 </script>

@@ -1,5 +1,6 @@
 <template lang="pug">
   div
+    
     section.hero.is-medium.is-dark.blog-header(v-bind:style="{'background-image': heroImageUrl}")
       .hero-body.has-text-centered.blog-header-body
         .container(style="padding: 4%")
@@ -22,9 +23,14 @@
     .content.blog-content
       .container(v-html="blog.content")
 
+    .container.comments
+      vue-disqus(shortname="atmaprakashdimri")
+
 </template>
 
 <script>
+import VueDisqus from "vue-disqus/VueDisqus.vue";
+
 export default {
   data() {
     return {
@@ -50,6 +56,9 @@ export default {
   },
   beforeMount() {
     this.getBlogDetails();
+  },
+  components: {
+    VueDisqus
   }
 };
 </script>
