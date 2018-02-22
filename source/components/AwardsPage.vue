@@ -7,7 +7,7 @@
             h1.subtitle.has-text-info Award Received: {{award.time}}
             .content(v-html="award.long_description")
           .column.is-6
-            tiny-slider(:axis="vertical" :mouse-drag="true" :loop="true")
+            tiny-slider(:mode="gallery" :controls="false" :loop="true" :autoplay="true" :autoplayButtonOutput="false")
               div(v-for="imageId in award.imageIds" :key="imageId")
                 figure.image
                   img(v-bind:src="'/showImage/' + imageId")
