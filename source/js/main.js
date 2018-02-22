@@ -1,6 +1,7 @@
 import Vue from 'vue';
 import VueResource from 'vue-resource';
 import VueRouter from 'vue-router';
+import SocialSharing from 'vue-social-sharing';
 import Routes from './vueroutes';
 import App from '../components/App.vue';
 
@@ -66,6 +67,7 @@ Vue.component('tab', {
   }
 });
 
+Vue.use(SocialSharing);
 Vue.use(VueRouter);
 Vue.use(VueResource);
 
