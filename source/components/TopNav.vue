@@ -20,7 +20,7 @@
 
 <style lang="scss" scoped>
 .router-link-active {
-  border-bottom: 2px solid white;
+  border-bottom: 4px solid #06d6a0;
 }
 </style>
 
