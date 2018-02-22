@@ -1,16 +1,17 @@
 <template lang="pug">
-  .container(style="padding: 4%")
+  div(style="padding-top: 2%")
     tabs
       tab(v-for="(award, index) in awards" :name="award.name" :key="award.id" :selected="index==0")
-        .columns
-          .column.is-6
-            h1.subtitle.has-text-info Award Received: {{award.time}}
-            .content(v-html="award.long_description")
-          .column.is-6
-            tiny-slider(:mode="gallery" :controls="false" :loop="true" :autoplay="true" :autoplayButtonOutput="false")
-              div(v-for="imageId in award.imageIds" :key="imageId")
-                figure.image
-                  img(v-bind:src="'/showImage/' + imageId")
+        .container(style="padding-left: 4%; padding-right:4%")
+          .columns
+            .column.is-6
+              h1.subtitle.has-text-info Award Received: {{award.time}}
+              .content(v-html="award.long_description")
+            .column.is-6
+              tiny-slider(:mode="gallery" :controls="false" :loop="true" :autoplay="true" :autoplayButtonOutput="false")
+                div(v-for="imageId in award.imageIds" :key="imageId")
+                  figure.image
+                    img(v-bind:src="'/showImage/' + imageId")
 
 </template>
 

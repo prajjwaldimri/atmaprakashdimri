@@ -15,7 +15,7 @@ import 'bulma-extensions/bulma-accordion/dist/bulma-accordion.min';
 Vue.component('tabs', {
   template: `
   <div>
-    <div class="tabs is-centered is-fullwidth is-large is-toggle">
+    <div class="tabs is-centered is-fullwidth is-toggle">
       <ul>
         <li v-for="tab in tabs" :class="{'is-active': tab.isActive}">
           <a :href="tab.href" @click="selectTab(tab)"> {{tab.name}}  </a>
