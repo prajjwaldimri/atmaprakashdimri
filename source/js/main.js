@@ -75,6 +75,8 @@ const router = new VueRouter({
 });
 
 // eslint-disable-next-line no-new
+
+// eslint-disable-next-line no-new
 new Vue({
   el: '#app',
   render: h => h(App),

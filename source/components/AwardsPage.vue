@@ -7,20 +7,22 @@
             h1.subtitle.has-text-info Award Received: {{award.time}}
             .content(v-html="award.long_description")
           .column.is-6
-            .siema
-              figure.image(v-for="imageId in award.imageIds")
-                img(v-bind:src="'/showImage/' + imageId")
+            tiny-slider(:axis="vertical" :mouse-drag="true" :loop="true")
+              div(v-for="imageId in award.imageIds" :key="imageId")
+                figure.image
+                  img(v-bind:src="'/showImage/' + imageId")
 
 </template>
 
 <script>
 import moment from "moment";
-import Siema from "siema";
+import VueTinySlider from "vue-tiny-slider";
 
 export default {
   data() {
     return {
-      awards: []
+      awards: [],
+      auto: 3000
     };
   },
   methods: {
@@ -41,34 +43,16 @@ export default {
   beforeMount() {
     this.getAwards();
   },
-  updated: function() {
-    var siemas = document.querySelectorAll(".siema");
-    var mySiemas = [];
-
-    for (const siema of siemas) {
-      var tempSiema = new Siema({
-        selector: siema,
-        duration: 1000,
-        easing: "ease-out",
-        perPage: 1,
-        startIndex: 0,
-        draggable: true,
-        multipleDrag: true,
-        threshold: 20,
-        loop: true
-      });
-      mySiemas.push(tempSiema);
-    }
-
-    mySiemas.forEach(siema => {
-      setInterval(() => siema.next(), 5000);
-    });
-
-    //HACK:  Need to set width explicitly as vue tabs are reducing the width of sliders to 0
-    var mainWidth = getComputedStyle(siemas[0].firstChild)["width"];
-    siemas.forEach(siema => {
-      siema.firstChild.style.width = mainWidth;
-    });
+  components: {
+    "tiny-slider": VueTinySlider
   }
 };
 </script>
+
+<style lang="scss" scoped>
+.slide {
+  height: 300px;
+  position: relative;
+}
+</style>
+
