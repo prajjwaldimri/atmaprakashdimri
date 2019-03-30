@@ -1,24 +1,24 @@
 let gridfsFile, File, gridfsImage, Image;
-const path = require("path");
-const multer = require("multer");
-const fileModel = require("../models/file");
+const path = require('path');
+const multer = require('multer');
+const fileModel = require('../models/file');
 
-const mongoose = require("mongoose");
+const mongoose = require('mongoose');
 mongoose
   .connect(
-    process.env.MONGODB_URI || "mongodb://localhost/passport_local_mongoose"
+    process.env.MONGODB_URI || 'mongodb://localhost/passport_local_mongoose'
   )
   .then(
     () => {
-      gridfsFile = require("mongoose-gridfs")({
-        collection: "filesGridFs",
-        model: "FileGridFS",
+      gridfsFile = require('mongoose-gridfs')({
+        collection: 'filesGridFs',
+        model: 'FileGridFS',
         mongooseConnection: mongoose.connection
       });
       File = gridfsFile.model;
-      gridfsImage = require("mongoose-gridfs")({
-        collection: "images",
-        model: "Image",
+      gridfsImage = require('mongoose-gridfs')({
+        collection: 'images',
+        model: 'Image',
         mongooseConnection: mongoose.connection
       });
       Image = gridfsImage.model;
@@ -28,74 +28,74 @@ mongoose
     }
   );
 
-const GridFsStorage = require("multer-gridfs-storage");
+const GridFsStorage = require('multer-gridfs-storage');
 const fileStorage = new GridFsStorage({
-  url: process.env.MONGODB_URI || "mongodb://localhost/passport_local_mongoose",
+  url: process.env.MONGODB_URI || 'mongodb://localhost/passport_local_mongoose',
   file: (req, file) => {
     return {
       filename:
-        file.originalname + "-" + Date.now() + path.extname(file.originalname),
-      bucketName: "filesGridFs"
+        file.originalname + '-' + Date.now() + path.extname(file.originalname),
+      bucketName: 'filesGridFs'
     };
   }
 });
 const imageStorage = new GridFsStorage({
-  url: process.env.MONGODB_URI || "mongodb://localhost/passport_local_mongoose",
+  url: process.env.MONGODB_URI || 'mongodb://localhost/passport_local_mongoose',
   file: (req, file) => {
     return {
       filename:
-        file.originalname + "-" + Date.now() + path.extname(file.originalname),
-      bucketName: "images"
+        file.originalname + '-' + Date.now() + path.extname(file.originalname),
+      bucketName: 'images'
     };
   }
 });
 
 const fileUpload = multer({
   storage: fileStorage,
-  fileFilter: function(req, file, cb) {
-    checkFileType(file, cb, /doc|docx|xls|xlsx|xltx|ttf|otf|ppt|pdf|zip|apk/);
+  fileFilter: function (req, file, cb) {
+    checkFileType(file, cb, /doc|apk|docx|xls|xlsx|xltx|ttf|otf|ppt|pdf|zip/);
   }
-}).single("uploadedFile");
+}).single('uploadedFile');
 
 const imageUpload = multer({
   storage: imageStorage,
   limits: { fileSize: 50000000 },
-  fileFilter: function(req, file, cb) {
+  fileFilter: function (req, file, cb) {
     checkFileType(file, cb, /jpeg|jpg|png|gif/);
   }
-}).single("uploadedImage");
+}).single('uploadedImage');
 
 const imageUploadMultiple = multer({
   storage: imageStorage,
   limits: { fileSize: 50000000 },
-  fileFilter: function(req, file, cb) {
+  fileFilter: function (req, file, cb) {
     checkFileType(file, cb, /jpeg|jpg|png|gif/);
   }
-}).array("uploadedImages", 10);
+}).array('uploadedImages', 10);
 
-function checkFileType(file, cb, allowedFileTypes) {
+function checkFileType (file, cb, allowedFileTypes) {
   // Check extension
   const extName = allowedFileTypes.test(
     path.extname(file.originalname).toLowerCase()
   );
   // Check MIME-TYPE
-  const mimeType = allowedFileTypes.test(file.mimetype);
+  // const mimeType = allowedFileTypes.test(file.mimetype);
 
-  if (extName && mimeType) {
+  if (extName) {
     return cb(null, true);
   } else {
-    cb(new Error("File Type Not allowed!"));
+    cb(new Error('File Type Not allowed!'));
   }
 }
 
 exports.file_list = (req, res) => {
   fileModel.find({}, (err, files) => {
     if (err) {
-      req.flash("danger", err);
-      res.redirect("back");
+      req.flash('danger', err);
+      res.redirect('back');
     }
-    res.render("dashboard/allUploadedFiles", {
-      pageTitle: "List of uploaded files on server",
+    res.render('dashboard/allUploadedFiles', {
+      pageTitle: 'List of uploaded files on server',
       files: files
     });
   });
@@ -104,8 +104,8 @@ exports.file_list = (req, res) => {
 exports.file_list_json = (req, res) => {
   fileModel.find({}, (err, files) => {
     if (err) {
-      req.flash("danger", "No Files Found!");
-      res.redirect("back");
+      req.flash('danger', 'No Files Found!');
+      res.redirect('back');
     }
     res.json(files);
   });
@@ -114,11 +114,11 @@ exports.file_list_json = (req, res) => {
 exports.image_list = (req, res) => {
   Image.find({}, (err, images) => {
     if (err) {
-      req.flash("danger", err);
-      res.redirect("back");
+      req.flash('danger', err);
+      res.redirect('back');
     }
-    res.render("dashboard/allUploadedImages", {
-      pageTitle: "List of uploaded files on server",
+    res.render('dashboard/allUploadedImages', {
+      pageTitle: 'List of uploaded files on server',
       images: images
     });
   });
@@ -127,8 +127,8 @@ exports.image_list = (req, res) => {
 exports.image_list_json = (req, res) => {
   Image.find({}, (err, images) => {
     if (err) {
-      req.flash("danger", err);
-      res.redirect("back");
+      req.flash('danger', err);
+      res.redirect('back');
     }
     res.json(images);
   });
@@ -137,7 +137,7 @@ exports.image_list_json = (req, res) => {
 exports.file_download = (req, res) => {
   fileModel.findOne({ fileId: req.params.fileId }, (err, file) => {
     if (err) {
-      return res.redirect("back");
+      return res.redirect('back');
     }
     // res.setHeader('content-type', `${file.mimetype}`);
     // res.setHeader('Content-Disposition', `attachment; filename=${file.name}`);
@@ -149,7 +149,7 @@ exports.file_download = (req, res) => {
 
 exports.image_download = (req, res) => {
   let imageStream = Image.readById(req.params.fileId);
-  imageStream.on("error", () => {
+  imageStream.on('error', () => {
     return res.status(404);
   });
 
@@ -159,16 +159,16 @@ exports.image_download = (req, res) => {
 exports.file_delete = (req, res) => {
   fileModel.remove({ fileId: req.params.fileId }, err => {
     if (err) {
-      req.flash("danger", err);
-      return res.redirect("back");
+      req.flash('danger', err);
+      return res.redirect('back');
     }
     File.unlinkById(req.params.fileId, (err, unlinkedAttachment) => {
       if (err) {
-        req.flash("danger", err);
+        req.flash('danger', err);
       } else {
-        req.flash("success", "File successfully deleted");
+        req.flash('success', 'File successfully deleted');
       }
-      res.redirect("back");
+      res.redirect('back');
     });
   });
 };
@@ -176,23 +176,23 @@ exports.file_delete = (req, res) => {
 exports.image_delete = (req, res) => {
   Image.unlinkById(req.params.fileId, (err, unlinkedAttachment) => {
     if (err) {
-      req.flash("danger", err);
+      req.flash('danger', err);
     }
-    req.flash("success", "Image successfully deleted");
-    res.redirect("back");
+    req.flash('success', 'Image successfully deleted');
+    res.redirect('back');
   });
 };
 
 exports.file_upload_get = (req, res) => {
-  res.render("dashboard/newFileUpload", { pageTitle: "Upload a file" });
+  res.render('dashboard/newFileUpload', { pageTitle: 'Upload a file' });
 };
 
 exports.file_upload_post = (req, res) => {
   fileUpload(req, res, err => {
     if (err) {
-      req.flash("danger", "Error Uploading File");
+      req.flash('danger', 'Error Uploading File');
       console.log(err);
-      res.redirect("back");
+      res.redirect('back');
     }
     console.log(req.file);
     fileModel.create(
@@ -204,30 +204,30 @@ exports.file_upload_post = (req, res) => {
       },
       (err, file) => {
         if (err) {
-          req.flash("danger", "Error Uploading File");
+          req.flash('danger', 'Error Uploading File');
           console.log(err);
         } else {
-          req.flash("success", "Successfully uploaded file");
+          req.flash('success', 'Successfully uploaded file');
         }
       }
     );
-    res.redirect("/adminDashboard/allUploadedFiles");
+    res.redirect('/adminDashboard/allUploadedFiles');
   });
 };
 
 exports.image_upload_get = (req, res) => {
-  res.render("dashboard/newImageUpload", { pageTitle: "Upload an image" });
+  res.render('dashboard/newImageUpload', { pageTitle: 'Upload an image' });
 };
 
 exports.image_upload_post = (req, res) => {
   imageUpload(req, res, err => {
     if (err) {
-      req.flash("danger", "Error Uploading File");
+      req.flash('danger', 'Error Uploading File');
       console.log(err);
     } else {
-      req.flash("success", "Successfully uploaded image");
+      req.flash('success', 'Successfully uploaded image');
     }
-    res.redirect("/adminDashboard/allUploadedImages");
+    res.redirect('/adminDashboard/allUploadedImages');
   });
 };
 
@@ -235,7 +235,7 @@ exports.upload_image = (req, res) => {
   return new Promise((resolve, reject) => {
     imageUpload(req, res, err => {
       if (err) {
-        req.flash("danger", "Error Uploading File");
+        req.flash('danger', 'Error Uploading File');
         reject(err);
       }
       resolve(req);
@@ -247,7 +247,7 @@ exports.upload_image_multiple = (req, res) => {
   return new Promise((resolve, reject) => {
     imageUploadMultiple(req, res, err => {
       if (err) {
-        req.flash("danger", "Error Uploading File");
+        req.flash('danger', 'Error Uploading File');
         reject(err);
       }
       resolve(req);
