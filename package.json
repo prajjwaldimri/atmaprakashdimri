@@ -13,5 +13,8 @@
     "core-js": "^3.6.5",
     "nuxt": "^2.14.6"
   },
-  "devDependencies": {}
+  "devDependencies": {
+    "pug": "^3.0.0",
+    "pug-plain-loader": "^1.1.0"
+  }
 }
