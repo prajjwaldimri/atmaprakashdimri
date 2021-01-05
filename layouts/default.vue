@@ -42,7 +42,7 @@ html {
   flex-direction: column;
   height: 100vh;
   width: 100vw;
-  background-image: url("~assets/background.jpg");
+  background-image: url("~assets/background.jpg?webp");
   background-size: cover;
 }
 
@@ -50,4 +50,6 @@ html {
   margin-top: 3rem;
   margin-bottom: 2rem;
 }
+
+$gold: #d8ab4e;
 </style>

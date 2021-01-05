@@ -1,7 +1,7 @@
 <template lang="pug">
 .top-nav
   .nav-header
-    img(src="~/assets/brand.svg", height="24")
+    img(src="~/assets/brand.svg", height="18")
   .nav-items
     NuxtLink(to="/") about
     NuxtLink(to="/works") works
