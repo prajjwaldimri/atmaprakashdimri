@@ -42,5 +42,9 @@ export default {
   axios: {},
 
   // Build Configuration (https://go.nuxtjs.dev/config-build)
-  build: {}
+  build: {},
+
+  loading: {
+    color: "#D8AB4E"
+  }
 };
