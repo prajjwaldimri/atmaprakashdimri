@@ -16,6 +16,7 @@ footer {
   max-height: 2rem;
   height: 2rem;
   opacity: 80%;
+  font-size: 0.8rem;
 }
 
 a,
