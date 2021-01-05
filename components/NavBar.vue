@@ -13,8 +13,8 @@
 .top-nav {
   position: fixed;
   top: 0;
-  height: 54px;
-  max-height: 54px;
+  height: 3rem;
+  max-height: 3rem;
   display: flex;
   width: 100%;
   justify-content: space-between;

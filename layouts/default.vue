@@ -2,14 +2,16 @@
   <div class="content">
     <NavBar />
     <Nuxt class="main-content" />
+    <Footer />
   </div>
 </template>
 
 <script>
 import NavBar from "~/components/NavBar.vue";
+import Footer from "~/components/Footer.vue";
 
 export default {
-  components: { NavBar },
+  components: { NavBar, Footer },
 };
 </script>
 
@@ -45,6 +47,7 @@ html {
 }
 
 .main-content {
-  margin-top: 54px;
+  margin-top: 3rem;
+  margin-bottom: 2rem;
 }
 </style>
