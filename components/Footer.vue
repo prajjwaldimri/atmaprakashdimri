@@ -7,7 +7,6 @@ footer
 
 <style lang="scss" scoped>
 footer {
-  position: fixed;
   bottom: 0;
   display: flex;
   align-items: center;
