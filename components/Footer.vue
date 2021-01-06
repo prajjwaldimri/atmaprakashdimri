@@ -16,6 +16,12 @@ footer {
   height: 2rem;
   opacity: 80%;
   font-size: 0.8rem;
+
+  @media screen and (max-width: 700px) {
+    bottom: inherit;
+    top: 0;
+    position: fixed;
+  }
 }
 
 a,

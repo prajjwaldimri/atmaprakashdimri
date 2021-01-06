@@ -23,6 +23,16 @@
   z-index: 100;
 
   @media screen and (max-width: 700px) {
+    top: inherit;
+    bottom: 0;
+    justify-content: center;
+    background-color: #111;
+  }
+}
+
+.nav-header {
+  @media screen and (max-width: 700px) {
+    display: none;
   }
 }
 
