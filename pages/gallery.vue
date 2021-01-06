@@ -4,41 +4,41 @@
   section.container
 
         .gallery
-            img(src="https://images.unsplash.com/photo-1482049016688-2d3e1b311543?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60")
+            img(src="~assets/president-award.jpg?webp")
             span.description First description
         .gallery
-            img(src="https://images.unsplash.com/photo-1484723091739-30a097e8f929?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60")
+            img(src="~assets/dm-honor.jpg?webp")
             span.description Second description
         .gallery
-            img(src="https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60")
+            img(src="~assets/election-dm.jpg?webp")
             span.description Third description
             
         .gallery
-            img(src="https://images.unsplash.com/photo-1476718406336-bb5a9690ee2a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60")
+            img(src="~assets/intel-award-2003.jpg?webp")
             span.description Fourth description
         .gallery
-            img(src="https://images.unsplash.com/photo-1506354666786-959d6d497f1a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60")
+            img(src="~assets/intel-award-2004.jpg?webp")
             span.description Fifth description
         .gallery
-            img(src="https://images.unsplash.com/photo-1478145046317-39f10e56b5e9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60")
+            img(src="~assets/president-estate.jpg?webp")
             span.description Sixth description
         .gallery
-            img(src="https://images.unsplash.com/photo-1467003909585-2f8a72700288?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60")
+            img(src="~assets/youth-icon.jpg?webp")
             span.description Seventh description
         .gallery
-            img(src="https://images.unsplash.com/photo-1529042410759-befb1204b468?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60")
+            img(src="~assets/sailesh-matyani.jpg?webp")
             span.description Eighth description
         .gallery
-            img(src="https://images.unsplash.com/photo-1484980972926-edee96e0960d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60")
+            img(src="~assets/award-red-board.jpg?webp")
             span.description Ninth description
         .gallery
-            img(src="https://images.unsplash.com/photo-1432139509613-5c4255815697?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60")
+            img(src="~assets/chamoli-times.jpg?webp")
             span.description Tenth description
         .gallery
-            img(src="https://images.unsplash.com/photo-1485962398705-ef6a13c41e8f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60")
+            img(src="~assets/president-group.jpg?webp")
             span.description Eleventh description
         .gallery
-            img(src="https://images.unsplash.com/photo-1458642849426-cfb724f15ef7?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60") 
+            img(src="~assets/president-group-2.jpg?webp")
             span.description Twelfth description
       
 
@@ -46,15 +46,18 @@
 </template>
 
 <style lang="scss" scoped>
+.begin {
+  padding: 7rem;
+}
 .container {
   display: grid;
-  grid-gap: 40px;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  //grid-gap: 10px;
+  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
   grid-auto-rows: 300px;
 }
 .container .gallery img {
-  width: 100%;
-  height: 100%;
+  width: 95%;
+  height: 95%;
   object-fit: cover;
 }
 
@@ -77,7 +80,7 @@ img {
 }
 
 .container .gallery:hover img {
-  opacity: 0.7;
+  opacity: 0.1;
 }
 
 .container .gallery {
@@ -85,7 +88,8 @@ img {
   justify-content: center;
   align-items: center;
   font-size: 2em;
-  color: #20263f;
+  color: #d8ab4e;
+  flex-basis: content;
 }
 </style>
 
