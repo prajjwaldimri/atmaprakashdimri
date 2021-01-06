@@ -2,7 +2,7 @@
 footer
   p Made with ❤️ by&nbsp;
     span
-      a(href="https://prajjwal.me") Prajjwal Dimri
+      a(href="https://prajjwal.me", target="_blank") Prajjwal Dimri
 </template>
 
 <style lang="scss" scoped>
