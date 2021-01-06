@@ -1,6 +1,84 @@
 <template lang="pug">
 .downloads
+  table.styled-table
+    thead
+      tr
+        th File Name
+        th Size
+        th Upload Date
+        th Download Link
+
+    tbody
+      tr
+        td Income tax
+        td 450 KB
+        td December 2020
+        td
+          a(href="https://prajjwal.me", target="_blank") Link
+      tr
+        td G.P.F
+        td 450 KB
+        td January 2020
+        td
+          a(href="https://prajjwal.me", target="_blank") Link
 </template>
 
 <style lang="scss" scoped>
+$gold: #d8ab4e;
+
+.downloads {
+  width: 100vw;
+  min-height: 70vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+a {
+  color: #f8f8f8;
+  text-align: center;
+}
+
+.styled-table {
+  border-collapse: collapse;
+  margin: 2rem 0;
+  font-size: 1.1rem;
+  min-width: 15rem;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+
+  @media screen and (max-width: 600px) {
+    font-size: 0.8rem;
+  }
+
+  thead {
+    tr {
+      background-color: $gold;
+      color: #333;
+      text-align: left;
+    }
+  }
+
+  th,
+  td {
+    padding: 1rem 1.5rem;
+    text-align: center;
+    @media screen and (max-width: 600px) {
+      padding: 1rem 0.5rem;
+    }
+  }
+
+  tbody {
+    tr {
+      border-bottom: thin solid #f8f8f8;
+
+      &:nth-of-type(even) {
+        background-color: #333;
+      }
+
+      &:last-of-type() {
+        border-bottom: thin solid #f8f8f8;
+      }
+    }
+  }
+}
 </style>

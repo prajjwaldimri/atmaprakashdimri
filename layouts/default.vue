@@ -51,6 +51,4 @@ html {
   margin-top: 3rem;
   margin-bottom: 2rem;
 }
-
-$gold: #d8ab4e;
 </style>
