@@ -27,6 +27,7 @@ html {
   -webkit-font-smoothing: antialiased;
   box-sizing: border-box;
   color: #f8f8f8;
+  background-color: black;
 }
 
 *,
@@ -43,7 +44,7 @@ html {
   min-height: 100vh;
   width: 100vw;
   background-image: url("~assets/background.jpg?webp");
-  background-size: cover;
+  background-size: contain;
 }
 
 .main-content {
