@@ -21,6 +21,9 @@
   align-items: center;
   padding: 0 2rem;
   z-index: 100;
+
+  @media screen and (max-width: 700px) {
+  }
 }
 
 .nav-items {
