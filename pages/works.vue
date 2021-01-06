@@ -108,8 +108,9 @@ $line: 0.4rem;
   max-width: 50%;
 
   @media screen and (max-width: 1000px) {
-    margin-left: $spacing * 2.3;
+    margin-left: $spacing * 3;
     max-width: 90%;
+    padding-right: 2rem;
   }
 
   .event {
@@ -119,14 +120,23 @@ $line: 0.4rem;
 
     img {
       height: 14rem;
+      @media screen and (max-width: 1000px) {
+        height: 7rem;
+      }
     }
 
     h2 {
       margin-top: 2rem;
+      @media screen and (max-width: 1000px) {
+        text-align: center;
+      }
     }
 
     p {
       margin-top: 1rem;
+      @media screen and (max-width: 1000px) {
+        text-align: center;
+      }
     }
 
     &:before,
