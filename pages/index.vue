@@ -14,7 +14,7 @@ $gold: #d8ab4e;
 .about {
   display: flex;
   width: 100%;
-  height: 100%;
+  height: 85vh;
   justify-content: space-between;
   align-items: center;
   padding: 0 4rem;

@@ -40,7 +40,7 @@ html {
 .content {
   display: flex;
   flex-direction: column;
-  height: 100vh;
+  min-height: 100vh;
   width: 100vw;
   background-image: url("~assets/background.jpg?webp");
   background-size: cover;
