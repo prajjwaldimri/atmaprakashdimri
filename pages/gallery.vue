@@ -48,6 +48,9 @@
 <style lang="scss" scoped>
 .begin {
   padding: 7rem;
+  @media screen and (max-width: 600px) {
+    padding: 1rem;
+  }
 }
 .container {
   display: grid;
