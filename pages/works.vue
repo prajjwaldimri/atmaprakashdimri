@@ -72,7 +72,7 @@
       h2 Transfer policies
       p Helped in creating transfer policies, surplus policies and promotion policies in Uttarakhand.
 
-    li.event(data-date="Ongoing")
+    li.event(data-date="Future")
       h2 Keep checking here
       p To see what else is being done.
 </template>
