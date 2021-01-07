@@ -101,7 +101,7 @@ $line: 0.4rem;
   line-height: 1.5rem;
   padding: $spacing;
   margin: $spacing auto;
-  margin-left: $spacing * 10;
+  margin-left: $spacing * 8.5;
   position: relative;
   list-style: none;
   text-align: left;

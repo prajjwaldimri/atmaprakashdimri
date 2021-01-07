@@ -1,48 +1,53 @@
 <template lang="pug">
 .begin
-
   section.container
+    .gallery
+      img(src="~assets/president-award.jpg?webp", loading="eager")
+      span.description Receiving National Award to Teachers
 
-        .gallery
-            img(src="~assets/president-award.jpg?webp")
-            span.description First description
-        .gallery
-            img(src="~assets/dm-honor.jpg?webp")
-            span.description Second description
-        .gallery
-            img(src="~assets/election-dm.jpg?webp")
-            span.description Third description
-            
-        .gallery
-            img(src="~assets/intel-award-2003.jpg?webp")
-            span.description Fourth description
-        .gallery
-            img(src="~assets/intel-award-2004.jpg?webp")
-            span.description Fifth description
-        .gallery
-            img(src="~assets/president-estate.jpg?webp")
-            span.description Sixth description
-        .gallery
-            img(src="~assets/youth-icon.jpg?webp")
-            span.description Seventh description
-        .gallery
-            img(src="~assets/sailesh-matyani.jpg?webp")
-            span.description Eighth description
-        .gallery
-            img(src="~assets/award-red-board.jpg?webp")
-            span.description Ninth description
-        .gallery
-            img(src="~assets/chamoli-times.jpg?webp")
-            span.description Tenth description
-        .gallery
-            img(src="~assets/president-group.jpg?webp")
-            span.description Eleventh description
-        .gallery
-            img(src="~assets/president-group-2.jpg?webp")
-            span.description Twelfth description
-      
+    .gallery
+      img(src="~assets/dm-honor.jpg?webp", loading="eager")
+      span.description Honored by District Magistrate, Chamoli
 
+    .gallery
+      img(src="~assets/election-dm.jpg?webp", loading="lazy")
+      span.description Award for excellent work during elections
 
+    .gallery
+      img(src="~assets/intel-award-2003.jpg?webp", loading="lazy")
+      span.description Intel Award of 2003.
+
+    .gallery
+      img(src="~assets/president-estate.jpg?webp", loading="lazy")
+      span.description In Rashtrapati Bhavan
+
+    .gallery
+      img(src="~assets/youth-icon.jpg?webp", loading="lazy")
+      span.description Recieving Youth Icon Award
+
+    .gallery
+      img(src="~assets/intel-award-2004.jpg?webp", loading="lazy")
+      span.description Intel Award of 2004
+
+    .gallery
+      img(src="~assets/sailesh-matyani.jpg?webp", loading="lazy")
+      span.description Shailesh Matiyani Award
+
+    .gallery
+      img(src="~assets/award-red-board.jpg?webp", loading="lazy")
+      span.description Recognition for excellent work
+
+    .gallery
+      img(src="~assets/chamoli-times.jpg?webp", loading="lazy")
+      span.description Award by Chamoli Times
+
+    .gallery
+      img(src="~assets/president-group.jpg?webp", loading="lazy")
+      span.description During visit to Rashtrapati Bhavan
+
+    .gallery
+      img(src="~assets/president-group-2.jpg?webp", loading="lazy")
+      span.description Group photo with president
 </template>
 
 <style lang="scss" scoped>
@@ -72,6 +77,8 @@ img {
 .description {
   display: none;
   position: absolute;
+  font-size: 1.2rem;
+  padding: 1rem;
 }
 
 .container .gallery:hover {
@@ -83,7 +90,7 @@ img {
 }
 
 .container .gallery:hover img {
-  opacity: 0.1;
+  opacity: 0.4;
 }
 
 .container .gallery {
