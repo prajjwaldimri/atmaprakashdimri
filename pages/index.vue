@@ -44,7 +44,7 @@ $gold: #d8ab4e;
     p {
       margin-top: 1rem;
       font-size: 1.4rem;
-      opacity: 90%;
+      opacity: 0.9;
       line-height: 2rem;
       @media screen and (max-width: 700px) {
         font-size: 1rem;
@@ -61,7 +61,7 @@ $gold: #d8ab4e;
     img {
       width: 100%;
       border-radius: 0.8rem;
-      opacity: 90%;
+      opacity: 0.9;
     }
   }
 }
