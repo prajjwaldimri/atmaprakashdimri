@@ -14,7 +14,7 @@ footer {
   width: 100%;
   max-height: 2rem;
   height: 2rem;
-  opacity: 80%;
+  opacity: 0.8;
   font-size: 0.8rem;
 
   @media screen and (max-width: 700px) {
