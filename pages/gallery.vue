@@ -60,7 +60,7 @@
 .container {
   display: grid;
   //grid-gap: 10px;
-  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(399px, 1fr));
   grid-auto-rows: 300px;
 }
 .container .gallery img {
