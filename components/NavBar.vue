@@ -1,5 +1,5 @@
 <template lang="pug">
-.top-nav
+#nav.top-nav
   .nav-header
     img(src="~/assets/brand.svg", height="18")
   .nav-items
@@ -21,6 +21,11 @@
   align-items: center;
   padding: 0 2rem;
   z-index: 100;
+  background-color: transparent;
+
+  &.dark-background {
+    background-color: #111;
+  }
 
   @media screen and (max-width: 700px) {
     top: inherit;
@@ -62,5 +67,19 @@ a.nuxt-link-exact-active.nuxt-link-active {
 </style>
 
 <script>
-export default {};
+export default {
+  mounted() {
+    let nav = document.getElementById("nav");
+    window.onscroll = () => {
+      if (
+        document.body.scrollTop >= 100 ||
+        document.documentElement.scrollTop >= 100
+      ) {
+        nav.classList.add("dark-background");
+      } else {
+        nav.classList.remove("dark-background");
+      }
+    };
+  },
+};
 </script>
