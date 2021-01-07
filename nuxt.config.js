@@ -45,7 +45,9 @@ export default {
   build: {},
 
   loading: {
-    color: "#D8AB4E"
+    color: "goldenrod",
+    height: "4px",
+    throttle: 0
   },
 
   optimizedImages: {
