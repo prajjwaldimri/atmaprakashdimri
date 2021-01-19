@@ -10,17 +10,14 @@
 
     tbody
       tr
-        td Income tax
-        td 450 KB
-        td December 2020
+        td Fonts
+        td 17 MB
+        td January 2021
         td
-          a(href="https://prajjwal.me", target="_blank") Link
-      tr
-        td G.P.F
-        td 450 KB
-        td January 2020
-        td
-          a(href="https://prajjwal.me", target="_blank") Link
+          a(
+            href="https://drive.google.com/file/d/1Off53MZbCFRCmmFwQS9NJjopiMUKQ8Ee/view?usp=sharing",
+            target="_blank"
+          ) Click to download
 </template>
 
 <style lang="scss" scoped>
