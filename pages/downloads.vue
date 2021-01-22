@@ -10,6 +10,16 @@
 
     tbody
       tr
+        td G.P.F. Software
+        td 200 KB
+        td January 2021
+        td
+          a(
+            href="https://drive.google.com/file/d/1pJSskIk2T3x2t9uCh7dQRT3P6yTz5YRX/view?usp=sharing",
+            target="_blank"
+          ) Click to download
+          
+      tr
         td Fonts
         td 17 MB
         td January 2021
