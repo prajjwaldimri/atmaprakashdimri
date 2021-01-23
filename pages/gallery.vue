@@ -47,7 +47,7 @@
 
     .gallery
       img(src="~assets/president-group-2.jpg?webp", loading="lazy")
-      span.description Group photo with president
+      span.description Group photo with the Secretary of president
 </template>
 
 <style lang="scss" scoped>
