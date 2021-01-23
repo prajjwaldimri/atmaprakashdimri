@@ -20,6 +20,16 @@
           ) Click to download
           
       tr
+        td Income Tax Software
+        td 300 KB
+        td January 2021
+        td
+          a(
+            href="https://drive.google.com/file/d/1GRZwqlVwOIfpaaMvahjPpxFDl3FKhSfD/view?usp=sharing",
+            target="_blank"
+          ) Click to download
+          
+      tr
         td Fonts
         td 17 MB
         td January 2021
