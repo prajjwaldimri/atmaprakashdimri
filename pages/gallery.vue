@@ -23,7 +23,7 @@
 
     .gallery
       img(src="~assets/youth-icon.jpg?webp", loading="lazy")
-      span.description Recieving Youth Icon Award
+      span.description Receiving Youth Icon Award
 
     .gallery
       img(src="~assets/intel-award-2004.jpg?webp", loading="lazy")
@@ -61,15 +61,15 @@
   display: grid;
   //grid-gap: 10px;
   grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
-  grid-auto-rows: 400px;
+  grid-auto-rows: 350px;
 
   @media screen and (max-width: 600px) {
-    grid-auto-rows: 300px;
+    grid-auto-rows: 400px;
   }
 }
 .container .gallery img {
   width: 95%;
-  height: 95%;
+  height: 80%;
   object-fit: cover;
 }
 
