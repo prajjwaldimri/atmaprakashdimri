@@ -34,6 +34,7 @@
       p He was sent to visit I.I.T. Bombay by the Govt. of India.
 
     li.event(data-date="2012")
+      img(src="~assets/science-award.jpg?webp", loading="lazy")
       h2 Awarded the "Excellent National Science Teacher Award"
       p by National Science Academy.
 
