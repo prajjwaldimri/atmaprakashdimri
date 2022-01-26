@@ -6,6 +6,10 @@
       span.description Receiving National Award to Teachers
 
     .gallery
+      img(src="~assets/dm-award.jpg?webp", loading="eager")
+      span.description Honored by District Magistrate, Chamoli
+
+    .gallery
       img(src="~assets/dm-honor.jpg?webp", loading="eager")
       span.description Honored by District Magistrate, Chamoli
 
@@ -36,6 +40,10 @@
     .gallery
       img(src="~assets/award-red-board.jpg?webp", loading="lazy")
       span.description Recognition for excellent work
+
+    .gallery
+      img(src="~assets/science-award.jpg?webp", loading="lazy")
+      span.description Science Teacher Award by The National Academy of Sciences
 
     .gallery
       img(src="~assets/chamoli-times.jpg?webp", loading="lazy")
