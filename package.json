@@ -15,7 +15,7 @@
   },
   "devDependencies": {
     "@aceforth/nuxt-optimized-images": "^1.4.0",
-    "fibers": "^5.0.0",
+    "fibers": "^5.0.1",
     "pug": "^3.0.2",
     "pug-plain-loader": "^1.1.0",
     "sass-loader": "^10.1.1",
