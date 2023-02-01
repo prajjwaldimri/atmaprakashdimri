@@ -22,10 +22,10 @@
       tr
         td Income Tax Software
         td 300 KB
-        td January 2023
+        td February 2023
         td
           a(
-            href="https://drive.google.com/file/d/1iIjuNcgsP10P19ioQqgfNlqMB4pWBW8i/view",
+            href="https://drive.google.com/file/d/1vRVwfSfnO-LuI2o8BIr40HIOR5zmmJG1/view",
             target="_blank"
           ) Click to download
 
@@ -36,6 +36,26 @@
         td
           a(
             href="https://drive.google.com/file/d/1Off53MZbCFRCmmFwQS9NJjopiMUKQ8Ee/view?usp=sharing",
+            target="_blank"
+          ) Click to download
+
+      tr
+        td Preboard Software Class 12th
+        td 17 MB
+        td February 2023
+        td
+          a(
+            href="https://drive.google.com/file/u/1/d/1ulQ-EpID7plWpqWxjEBO-5OqWlxOGh7K/view?usp=share_link",
+            target="_blank"
+          ) Click to download
+
+      tr
+        td Preboard Software Class 10th
+        td 17 MB
+        td February 2023
+        td
+          a(
+            href="https://drive.google.com/file/u/1/d/1q_r0LvdPoi0ZmVZJSlMz7dNvBqQc4e63/view?usp=share_link",
             target="_blank"
           ) Click to download
 </template>
