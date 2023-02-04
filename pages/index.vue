@@ -2,7 +2,7 @@
 .about
   .left-content
     h1 Atma Prakash Dimri
-    p is a president award winning teacher currently working as a lecturer in Physics at Government Inter College Bara-Bachnsyun, Rudrprayag, Uttarakhand
+    p is a president award winning teacher currently working as a lecturer in Physics at Government Inter College Dungri Maikot, Chamoli, Uttarakhand
   .right-content
     img(src="~assets/president-award.jpg?webp")
 </template>
