@@ -15,7 +15,7 @@
         td February 2022
         td
           a(
-            href="https://drive.google.com/file/d/1bPSIBE7hHILeDF-9VyCPQr466R8tij17/view",
+            href="https://drive.google.com/file/d/13_1G-2vhvEGXOBKLyZLgpYLrmlbDw8nt/view",
             target="_blank"
           ) Click to download
 
@@ -25,7 +25,7 @@
         td February 2023
         td
           a(
-            href="https://drive.google.com/file/d/11g6zqp5wvPT-IIveNrCKM-2_4bJ5t75j/view",
+            href="https://drive.google.com/file/d/1aXyFjvuikaJKTDVR70CVrdkjLP68JNCT/view",
             target="_blank"
           ) Click to download
 
