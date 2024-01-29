@@ -25,7 +25,7 @@
         td January 2024
         td
           a(
-            href="https://drive.google.com/file/d/1ObPberligjPERyJ8OX_Tjm92q-BadYzq/view",
+            href="https://drive.google.com/file/d/1bx7BI2cr76011uUiPAs_hJr4y8Tqqk1W/view?usp=sharing",
             target="_blank"
           ) Click to download
 
