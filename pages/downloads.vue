@@ -25,7 +25,7 @@
         td February 2024
         td
           a(
-            href="https://drive.google.com/file/d/1Fk0crmgcXTnlnRd3jAA6WYh6-yH5HKzq/view",
+            href="https://drive.google.com/file/d/1Ky_QQilxWMmBZSOSvIg_YcEyMV_BviNj/view?usp=sharing",
             target="_blank"
           ) Click to download
 
