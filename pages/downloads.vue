@@ -21,11 +21,11 @@
 
       tr
         td Income Tax Software
-        td 300 KB
-        td February 2024
+        td 250 KB
+        td January 2025
         td
           a(
-            href="https://drive.google.com/file/d/1Ky_QQilxWMmBZSOSvIg_YcEyMV_BviNj/view?usp=sharing",
+            href="https://drive.google.com/file/d/1Db-Y02wA5OYoZ_9NkELn0KSGz973z1Qn/view",
             target="_blank"
           ) Click to download
 
