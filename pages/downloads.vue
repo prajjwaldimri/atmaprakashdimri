@@ -10,12 +10,12 @@
 
     tbody
       tr
-        td G.P.F. Software
+        td G.P.F. Calculator
         td 200 KB
-        td February 2022
+        td September 2025
         td
           a(
-            href="https://drive.google.com/file/d/13_1G-2vhvEGXOBKLyZLgpYLrmlbDw8nt/view",
+            href="https://docs.google.com/spreadsheets/d/1sT5OBhQIkYlXCbDai8iq0qAXdzFDyrT8/view",
             target="_blank"
           ) Click to download
 
