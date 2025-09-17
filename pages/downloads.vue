@@ -15,7 +15,7 @@
         td September 2025
         td
           a(
-            href="https://docs.google.com/spreadsheets/d/1sT5OBhQIkYlXCbDai8iq0qAXdzFDyrT8/view",
+            href="https://drive.google.com/file/d/11RdMxXdsBOGw_Zg4hOHpMU13I4xK3cOV/view?usp=sharing",
             target="_blank"
           ) Click to download
 
