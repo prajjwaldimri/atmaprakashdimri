@@ -2,6 +2,9 @@
 .begin
   section.container
     .gallery
+      video(src="~assets/award-video-state.mp4", autoplay="true")
+      span.description Receiving State Award
+    .gallery
       img(src="~assets/president-award.jpg?webp", loading="eager")
       span.description Receiving National Award to Teachers
 
